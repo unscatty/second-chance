@@ -4,7 +4,7 @@
   "packageManager": "pnpm@8.7.6",
   "scripts": {
     "build": "vite-ssg build",
-    "dev": "vite --port 3333 --open",
+    "dev": "vite --port 4000",
     "lint": "eslint .",
     "preview": "vite preview",
     "preview-https": "serve dist",
@@ -17,6 +17,7 @@
     "sizecheck": "npx vite-bundle-visualizer"
   },
   "dependencies": {
+    "@julr/unocss-preset-forms": "^0.0.5",
     "@unhead/vue": "^1.7.4",
     "@unocss/reset": "^0.56.0",
     "@vueuse/core": "^10.4.1",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.43.0",
     "@iconify-json/carbon": "^1.1.21",
+    "@iconify-json/heroicons": "^1.1.12",
     "@intlify/unplugin-vue-i18n": "^1.2.0",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/nprogress": "^0.2.0",
