@@ -30,7 +30,7 @@ export interface Match {
 }
 
 export interface DogSearchSortBy {
-  field: keyof Dog
+  field: keyof Pick<Dog, 'age' | 'breed' | 'name'>
   direction: 'asc' | 'desc'
 }
 

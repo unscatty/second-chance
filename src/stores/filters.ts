@@ -4,19 +4,29 @@ import { type DogSearchQueryParams } from '~/types'
 type DogSearchFilterParams = Omit<DogSearchQueryParams, 'from' | 'size'>
 
 export const useFiltersStore = defineStore('filters', () => {
-  const filters = reactive<DogSearchFilterParams>({
+  const filters = ref<DogSearchFilterParams>({
     breeds: [],
     zipCodes: [],
     ageMin: 0,
-    ageMax: 20,
+    ageMax: 30,
     sort: {
       field: 'breed',
       direction: 'asc',
     },
   })
 
+  const setBreeds = (breeds: string[]) => {
+    filters.value.breeds = breeds
+  }
+
+  const removeBreed = (breedIndex: number) => {
+    filters.value.breeds?.splice(breedIndex, 1)
+  }
+
   return {
     filters,
+    setBreeds,
+    removeBreed
   }
 })
 
