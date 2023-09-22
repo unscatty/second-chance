@@ -1,5 +1,5 @@
 import axios, { type AxiosInstance } from 'axios'
-import { type Dog as DogType } from '~/types'
+import { type Dog as DogType, type Match as DogMatch } from '~/types'
 
 interface DogSearchSortBy {
   field: keyof DogType
@@ -40,7 +40,7 @@ export default class DogService {
     return data
   }
 
-  async search(queryParams: DogSearchQueryParams) {
+  async searchIds(queryParams: DogSearchQueryParams) {
     const { data } = await this.axiosInstance.get<DogSearchResult>('/search', {
       params: {
         ...queryParams,
@@ -49,5 +49,42 @@ export default class DogService {
     })
 
     return data
+  }
+
+  async getDogsByIds(dogIds: string[]) {
+    if (!dogIds.length) {
+      return []
+    }
+
+    if (dogIds.length > 100) {
+      throw new Error('Cannot fetch more than 100 dogs at a time')
+    }
+
+    const { data: dogs } = await this.axiosInstance.post<DogType[]>('/', dogIds)
+
+    return dogs
+  }
+
+  async search(queryParams: DogSearchQueryParams) {
+    const { resultIds, ...rest } = await this.searchIds(queryParams)
+    const dogs = await this.getDogsByIds(resultIds)
+
+    return {
+      dogs,
+      ...rest,
+    }
+  }
+
+  async getMatchId(dogIds: string[]) {
+    const { data } = await this.axiosInstance.post<DogMatch>('/match', dogIds)
+
+    return data
+  }
+
+  async match(dogIds: string[]) {
+    const { match } = await this.getMatchId(dogIds)
+    const matchedDogs = await this.getDogsByIds([match])
+
+    return matchedDogs[0]
   }
 }
