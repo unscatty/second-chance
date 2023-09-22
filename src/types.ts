@@ -28,3 +28,19 @@ export interface Coordinates {
 export interface Match {
   match: string
 }
+
+export interface DogSearchSortBy {
+  field: keyof Dog
+  direction: 'asc' | 'desc'
+}
+
+export type DogSearchQueryParams = Partial<{
+  breeds: string[]
+  zipCodes: string[]
+  ageMin: number
+  ageMax: number
+  // Additional query params
+  size: number
+  from: number
+  sort: DogSearchSortBy
+}>

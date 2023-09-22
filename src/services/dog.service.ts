@@ -1,21 +1,6 @@
+/* eslint-disable curly */
 import axios, { type AxiosInstance } from 'axios'
-import { type Dog as DogType, type Match as DogMatch } from '~/types'
-
-interface DogSearchSortBy {
-  field: keyof DogType
-  order: 'asc' | 'desc'
-}
-
-type DogSearchQueryParams = Partial<{
-  breeds: string[]
-  zipCodes: string[]
-  ageMin: number
-  ageMax: number
-  // Additional query params
-  size: number
-  from: number
-  sort: DogSearchSortBy
-}>
+import { type Match as DogMatch, type DogSearchQueryParams, type DogSearchSortBy, type Dog as DogType } from '~/types'
 
 interface DogSearchResult {
   resultIds: string[]
@@ -32,7 +17,7 @@ export default class DogService {
   })
 
   private sortToString(sort: DogSearchSortBy) {
-    return `${sort.field}:${sort.order}`
+    return `${sort.field}:${sort.direction}`
   }
 
   async getBreeds() {
