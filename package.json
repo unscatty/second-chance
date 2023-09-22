@@ -17,6 +17,7 @@
     "sizecheck": "npx vite-bundle-visualizer"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.16",
     "@julr/unocss-preset-forms": "^0.0.5",
     "@unhead/vue": "^1.7.4",
     "@unocss/reset": "^0.56.0",

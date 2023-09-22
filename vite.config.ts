@@ -15,6 +15,7 @@ import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
 import WebfontDownload from 'vite-plugin-webfont-dl'
+import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   resolve: {
@@ -59,6 +60,8 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
+      // AutoImport HeadlessUI components
+      resolvers: [HeadlessUiResolver()],
       // allow auto load markdown components under `./src/components/`
       extensions: ['vue', 'md'],
       // allow auto import and register components used in markdown

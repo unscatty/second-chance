@@ -7,6 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    DogCard: typeof import('./components/main/DogCard.vue')['default']
+    DogIcon: typeof import('./components/main/DogIcon.vue')['default']
+    Filters: typeof import('./components/main/Filters.vue')['default']
     Login: typeof import('./components/auth/Login.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
