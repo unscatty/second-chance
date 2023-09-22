@@ -1,6 +1,12 @@
 /* eslint-disable curly */
-import axios, { type AxiosInstance } from 'axios'
-import { type Match as DogMatch, type DogSearchQueryParams, type DogSearchSortBy, type Dog as DogType } from '~/types'
+import { type AxiosInstance } from 'axios'
+import authService from './auth.service'
+import {
+  type Match as DogMatch,
+  type DogSearchQueryParams,
+  type DogSearchSortBy,
+  type Dog as DogType,
+} from '~/types'
 
 interface DogSearchResult {
   resultIds: string[]
@@ -9,24 +15,24 @@ interface DogSearchResult {
   prev: string | null
 }
 
-export default class DogService {
-  axiosInstance: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_DOGS_ENDPOINT,
-    url: '/dogs',
-    withCredentials: true,
-  })
+export class DogService {
+  private axiosInstance: AxiosInstance
+
+  constructor(axiosInstance: AxiosInstance) {
+    this.axiosInstance = axiosInstance
+  }
 
   private sortToString(sort: DogSearchSortBy) {
     return `${sort.field}:${sort.direction}`
   }
 
   async getBreeds() {
-    const { data } = await this.axiosInstance.get<string[]>('/breeds')
+    const { data } = await this.axiosInstance.get<string[]>('/dogs/breeds')
     return data
   }
 
   async searchIds(queryParams: DogSearchQueryParams) {
-    const { data } = await this.axiosInstance.get<DogSearchResult>('/search', {
+    const { data } = await this.axiosInstance.get<DogSearchResult>('/dogs/search', {
       params: {
         ...queryParams,
         sort: queryParams.sort && this.sortToString(queryParams.sort),
@@ -45,7 +51,7 @@ export default class DogService {
       throw new Error('Cannot fetch more than 100 dogs at a time')
     }
 
-    const { data: dogs } = await this.axiosInstance.post<DogType[]>('/', dogIds)
+    const { data: dogs } = await this.axiosInstance.post<DogType[]>('/dogs', dogIds)
 
     return dogs
   }
@@ -61,7 +67,7 @@ export default class DogService {
   }
 
   async getMatchId(dogIds: string[]) {
-    const { data } = await this.axiosInstance.post<DogMatch>('/match', dogIds)
+    const { data } = await this.axiosInstance.post<DogMatch>('/dogs/match', dogIds)
 
     return data
   }
@@ -73,3 +79,5 @@ export default class DogService {
     return matchedDogs[0]
   }
 }
+
+export default new DogService(authService.instance)
