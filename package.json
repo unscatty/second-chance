@@ -19,6 +19,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.16",
     "@julr/unocss-preset-forms": "^0.0.5",
+    "@tanstack/vue-query": "^4.35.3",
     "@unhead/vue": "^1.7.4",
     "@unocss/reset": "^0.56.0",
     "@vueuse/core": "^10.4.1",
