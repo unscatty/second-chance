@@ -16,6 +16,7 @@ import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
+import { transformShortVmodel } from '@vue-macros/short-vmodel'
 
 export default defineConfig({
   resolve: {
@@ -29,6 +30,19 @@ export default defineConfig({
       plugins: {
         vue: Vue({
           include: [/\.vue$/, /\.md$/],
+          script: {
+            defineModel: true,
+            propsDestructure: true,
+          },
+          template: {
+            compilerOptions: {
+              nodeTransforms: [
+                transformShortVmodel({
+                  prefix: '$',
+                }),
+              ],
+            },
+          },
         }),
       },
     }),
@@ -49,13 +63,16 @@ export default defineConfig({
         'vue-i18n',
         '@vueuse/head',
         '@vueuse/core',
+        'pinia',
       ],
       dts: 'src/auto-imports.d.ts',
-      dirs: [
-        'src/composables',
-        'src/stores',
-      ],
+      dirs: ['src/composables', 'src/stores'],
       vueTemplate: true,
+      eslintrc: {
+        enabled: true, // Default `false`
+        filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+        globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+      },
     }),
 
     // https://github.com/antfu/unplugin-vue-components
