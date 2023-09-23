@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/vue-query'
 import { UnwrapRef } from 'vue'
 import dogService from '~/services/dog.service'
 import { type DogSearchSortBy, type DogSearchFilterQueryParams } from '~/types'
+import RangeSlider from '@vueform/slider'
 
 const defaultFilters: DogSearchFilterQueryParams = {
   breeds: [],
@@ -23,6 +24,11 @@ const { data: availableDogBreeds } = useQuery({
   queryFn: async () => dogService.getBreeds(),
   initialData: [],
 })
+
+const ageRange = ref([
+  selectedFilters.value.ageMin,
+  selectedFilters.value.ageMax,
+])
 
 const sortOptions: Record<DogSearchSortBy['field'], string> = {
   breed: 'Breed',
@@ -111,46 +117,25 @@ const applyFilters = () => {
             <!-- Here add chips -->
           </fieldset>
           <fieldset>
-            <legend class="block font-medium text-black">Age</legend>
-            <div class="inline-flex gap-5 sm:gap-10">
-              <div>
-                <label
-                  for="ageMin"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Min age
-                </label>
-                <div class="mt-1">
-                  <input
-                    id="ageMin"
-                    v-model="selectedFilters.ageMin"
-                    type="number"
-                    name="ageMin"
-                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md text-black"
-                    min="0"
-                    max="30"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  for="ageMax"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Max age
-                </label>
-                <div class="mt-1">
-                  <input
-                    id="ageMax"
-                    v-model="selectedFilters.ageMax"
-                    type="number"
-                    name="ageMax"
-                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md text-black"
-                    min="0"
-                    max="30"
-                  />
-                </div>
-              </div>
+            <legend class="block font-medium text-black">
+              Age {{ selectedFilters.ageMin }} - {{ selectedFilters.ageMax }}
+            </legend>
+            <div class="px-4 sm:px-0">
+              <RangeSlider
+                v-model="ageRange"
+                :step="1"
+                :merge="5"
+                :min="0"
+                :max="30"
+                show-tooltip="drag"
+                class="my-4 [--slider-height:0.75rem] [--slider-connect-bg:theme('colors.indigo.600')] [--slider-tooltip-bg:theme('colors.indigo.600')]"
+                @change="
+                  (updateRange: number[]) => {
+                    selectedFilters.ageMin = updateRange[0]
+                    selectedFilters.ageMax = updateRange[1]
+                  }
+                "
+              />
             </div>
           </fieldset>
         </div>
@@ -276,3 +261,11 @@ const applyFilters = () => {
     </div>
   </Popover>
 </template>
+
+<style src="@vueform/slider/themes/default.css"></style>
+<style scoped>
+.age-slider {
+  margin: 1rem auto;
+  --slider-height: 0.75rem;
+}
+</style>

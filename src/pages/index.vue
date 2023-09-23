@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { useQuery, useQueryClient } from '@tanstack/vue-query'
+import { useQuery } from '@tanstack/vue-query'
 import authService from '~/services/auth.service'
 import dogService from '~/services/dog.service'
 
-// const filtersStore = useFiltersStore()
 const { filters, sortBy } = storeToRefs(useFiltersStore())
 const paginationStore = usePaginationStore()
 const { handlePaginationResult } = paginationStore
@@ -41,13 +40,6 @@ const footerNavigation = {
   ],
 }
 
-const source = ref({ hi: 'hi' })
-
-const lazyFilters = computedWithControl(
-  () => source.value,
-  () => filters.value
-)
-
 const { isLoading, isError, data, error, isFetching, isPreviousData } =
   useQuery({
     queryKey: ['dogs', page, filters, sortBy],
@@ -60,11 +52,8 @@ const { isLoading, isError, data, error, isFetching, isPreviousData } =
       }),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
-    staleTime: 60 * 1000 * 60, // 1 hour to invalidate the cache
-    // enabled: false,
+    staleTime: 60 * 1000 * 15, // 15 minutes to invalidate cache
   })
-
-// getDogs()
 
 watch(
   () => data.value,
@@ -74,15 +63,6 @@ watch(
     }
   }
 )
-
-const applyFilters = () => {
-  // lazyFilters.trigger()
-}
-
-// watchDeep(sortBy, () => getDogs({ exact: true, queryKey: ['dogs', page, filters.value] }))
-// watchDeep(sortBy, () => {
-//   getDogs()
-// })
 </script>
 
 <template>
@@ -179,8 +159,8 @@ const applyFilters = () => {
             class="w-full flex justify-center items-center h-64 min-h-64"
           >
             <div
-              class="w-64 h-64 border-16 border-dashed rounded-full animate-spin border-violet-400"
-            ></div>
+              class="w-32 h-32 border-8 sm:w-64 sm:h-64 sm:border-16 border-dashed rounded-full animate-spin border-violet-400 dark:border-white"
+            />
           </div>
 
           <div
