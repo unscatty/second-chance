@@ -56,8 +56,7 @@ watch(dogsData, () => {
 watchDeep(sortBy, resetPagination)
 
 // ==== Favorites ====
-const favoriteDogsStore = useFavoritDogsStore()
-const { totalFavorites } = storeToRefs(favoriteDogsStore)
+const favoriteDogsStore = useFavoriteDogsStore()
 
 const isFavoritesModalOpen = ref(false)
 </script>
@@ -68,7 +67,7 @@ const isFavoritesModalOpen = ref(false)
       <header class="relative">
         <nav aria-label="Top">
           <!-- Secondary navigation -->
-          <div class="bg-white">
+          <div class="bg-white fixed min-w-full top-0 z-5">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div class="border-b border-gray-200">
                 <div class="h-16 flex items-center justify-between">
@@ -120,7 +119,11 @@ const isFavoritesModalOpen = ref(false)
                           />
                           <span class="sr-only">favorite dogs</span>
                           <span class="text-gray-400 group-hover:text-gray-500">
-                            {{ totalFavorites > 0 ? totalFavorites : '' }}
+                            {{
+                              favoriteDogsStore.totalFavorites > 0
+                                ? favoriteDogsStore.totalFavorites
+                                : ''
+                            }}
                           </span>
                         </button>
                       </div>
@@ -138,7 +141,7 @@ const isFavoritesModalOpen = ref(false)
 
     <div>
       <main>
-        <div class="bg-white">
+        <div class="bg-white mt-8 sm:mt-16">
           <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
               Title

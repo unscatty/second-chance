@@ -1,7 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { type Dog } from '~/types'
 
-export const useFavoritDogsStore = defineStore('favoriteDogs', () => {
+export const useFavoriteDogsStore = defineStore('favoriteDogs', () => {
   const favoriteDogs = ref<Dog[]>([])
 
   // Fake fogs data
@@ -9,9 +9,9 @@ export const useFavoritDogsStore = defineStore('favoriteDogs', () => {
   const fakeFavoriteDogs = computed(() => dogsData.value?.dogs.slice(0, 20))
 
   const totalFavorites = computed(() => {
-    // return favoriteDogs.value.length
+    return favoriteDogs.value.length
     // FIXME: fake data
-    return fakeFavoriteDogs.value?.length || 0
+    // return fakeFavoriteDogs.value?.length || 0
   })
 
   const addFavoriteDog = (dog: Dog) => {
@@ -44,5 +44,5 @@ export const useFavoritDogsStore = defineStore('favoriteDogs', () => {
 
 if (import.meta.hot)
   import.meta.hot.accept(
-    acceptHMRUpdate(useFavoritDogsStore as any, import.meta.hot)
+    acceptHMRUpdate(useFavoriteDogsStore as any, import.meta.hot)
   )

@@ -1,9 +1,15 @@
 <script setup lang="ts">
-const favoriteDogsStore = useFavoritDogsStore()
-const { favoriteDogs, fakeFavoriteDogs } = storeToRefs(favoriteDogsStore)
+import { type Dog as DogType } from '~/types'
+
+const favoriteDogsStore = useFavoriteDogsStore()
+const { favoriteDogs } = storeToRefs(favoriteDogsStore)
 const { removeFavoriteDog } = favoriteDogsStore
 
 const isOpen = defineModel<boolean>('isOpen', { required: true })
+
+const removeDog = (dogId: DogType['id']) => {
+  removeFavoriteDog(dogId)
+}
 </script>
 
 <template>
@@ -54,7 +60,9 @@ const isOpen = defineModel<boolean>('isOpen', { required: true })
                       <DogIcon />
                     </div>
                   </div>
-                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <div
+                    class="mt-3 mb-2 text-center sm:mt-0 sm:ml-4 sm:text-left"
+                  >
                     <DialogTitle
                       as="h3"
                       class="text-2xl leading-6 font-medium text-gray-900"
@@ -74,8 +82,8 @@ const isOpen = defineModel<boolean>('isOpen', { required: true })
                 <!-- Favorite dogs grid -->
                 <div class="max-h-lg overflow-y-scroll overflow-x-hidden p-6">
                   <ul role="list" class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-                    <li v-for="dog in fakeFavoriteDogs" :key="dog.id">
-                      <FavoriteDogCard :dog="dog" />
+                    <li v-for="dog in favoriteDogs" :key="dog.id">
+                      <FavoriteDogCard :dog="dog" @remove-dog="removeDog" />
                     </li>
                   </ul>
                 </div>

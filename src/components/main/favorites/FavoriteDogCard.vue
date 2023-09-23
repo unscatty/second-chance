@@ -7,6 +7,15 @@ const { dog } = defineProps<{
 }>()
 
 const { age, breed, img: image, name } = toRefs(dog)
+
+const emit = defineEmits<{
+  (e: 'removeDog', dogId: Dog['id']): void
+}>()
+
+// ===== Favorites =====
+const removeDog = () => {
+  emit('removeDog', dog.id)
+}
 </script>
 
 <template>
@@ -39,10 +48,11 @@ const { age, breed, img: image, name } = toRefs(dog)
         <div class="w-0 flex-1 flex">
           <button
             type="button"
-            class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
+            class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm font-medium border border-transparent rounded-bl-lg text-red-400 font-black hover:text-red-700"
+            @click="removeDog"
           >
             <div
-              class="i-heroicons:trash-20-solid w-5 h-5 text-gray-400"
+              class="i-heroicons:trash-20-solid w-5 h-5"
               aria-hidden="true"
             />
             <span class="ml-3">Delete</span>

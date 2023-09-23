@@ -7,6 +7,18 @@ const { dog } = defineProps<{
 }>()
 
 const { age, breed, img: image, name } = toRefs(dog)
+
+// ===== Favorites =====
+const favoriteDogsStore = useFavoriteDogsStore()
+const isFavoriteDog = computed(() => favoriteDogsStore.isFavoriteDog(dog))
+
+const addToFavorites = () => {
+  if (isFavoriteDog.value) {
+    favoriteDogsStore.removeFavoriteDog(dog.id)
+  } else {
+    favoriteDogsStore.addFavoriteDog(dog)
+  }
+}
 </script>
 
 <template>
@@ -28,9 +40,16 @@ const { age, breed, img: image, name } = toRefs(dog)
     >
       <button
         class="flex justify-center w-1/2 bg-white bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-gray-900 text-center"
+        @click="addToFavorites"
       >
         <div
+          v-if="isFavoriteDog"
           class="i-heroicons:heart-20-solid h-6 w-6 flex-shrink-0"
+          aria-hidden="true"
+        />
+        <div
+          v-else
+          class="i-heroicons:heart h-6 w-6 flex-shrink-0"
           aria-hidden="true"
         />
         <span class="sr-only">Add to favorites</span>
@@ -51,7 +70,7 @@ const { age, breed, img: image, name } = toRefs(dog)
       </span>
     </p>
   </div>
-  <p class="mt-1 text-sm text-gray-500">
+  <p class="mt-1 text-sm text-gray-500 text-left">
     {{ breed }}
   </p>
 </template>

@@ -5,7 +5,7 @@ const { breed, breedIndex } = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  removeBreed: [breedIndex: number]
+  (e: 'removeBreed', breedIndex: number): void
 }>()
 </script>
 
