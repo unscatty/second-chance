@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { useQuery } from '@tanstack/vue-query'
 import authService from '~/services/auth.service'
-import dogService from '~/services/dog.service'
 
-const { filters, sortBy } = storeToRefs(useFiltersStore())
+const { sortBy } = storeToRefs(useFiltersStore())
 const paginationStore = usePaginationStore()
-const { handlePaginationResult } = paginationStore
-const { page, resultSize: paginationResultSize } = storeToRefs(paginationStore)
+const { handlePaginationResult, reset: resetPagination } = paginationStore
 
 authService.login({
   email: 'email-1@email.com',
@@ -40,29 +37,28 @@ const footerNavigation = {
   ],
 }
 
-const { isLoading, isError, data, error, isFetching, isPreviousData } =
-  useQuery({
-    queryKey: ['dogs', page, filters, sortBy],
-    queryFn: () =>
-      dogService.search({
-        ...filters.value,
-        sort: sortBy.value,
-        from: (page.value - 1) * paginationResultSize.value,
-        size: paginationResultSize.value,
-      }),
-    keepPreviousData: true,
-    refetchOnWindowFocus: false,
-    staleTime: 60 * 1000 * 15, // 15 minutes to invalidate cache
-  })
+const {
+  isLoading,
+  isError,
+  data: dogsData,
+  error,
+  isFetching,
+  isPreviousData,
+} = useDogSearch('dogs')
 
-watch(
-  () => data.value,
-  () => {
-    if (data.value) {
-      handlePaginationResult(data.value)
-    }
+watch(dogsData, () => {
+  if (dogsData.value) {
+    handlePaginationResult(dogsData.value)
   }
-)
+})
+
+// Go back to page 1 if 'sort by' changes
+watchDeep(sortBy, resetPagination)
+
+// ==== Favorites ====
+const favoriteDogsStore = useFavoriteDogsStore()
+
+const isFavoritesModalOpen = ref(false)
 </script>
 
 <template>
@@ -71,7 +67,7 @@ watch(
       <header class="relative">
         <nav aria-label="Top">
           <!-- Secondary navigation -->
-          <div class="bg-white">
+          <div class="bg-white fixed min-w-full top-0 z-5">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div class="border-b border-gray-200">
                 <div class="h-16 flex items-center justify-between">
@@ -112,13 +108,24 @@ watch(
                       />
 
                       <div class="flow-root">
-                        <a href="#" class="group -m-2 p-2 flex items-center">
+                        <button
+                          type="button"
+                          class="group -m-2 p-2 flex items-center justify-around gap-2"
+                          @click="isFavoritesModalOpen = true"
+                        >
                           <div
                             class="i-heroicons:heart flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                             aria-hidden="true"
                           />
-                          <span class="sr-only">items in cart, view bag</span>
-                        </a>
+                          <span class="sr-only">favorite dogs</span>
+                          <span class="text-gray-400 group-hover:text-gray-500">
+                            {{
+                              favoriteDogsStore.totalFavorites > 0
+                                ? favoriteDogsStore.totalFavorites
+                                : ''
+                            }}
+                          </span>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -130,9 +137,11 @@ watch(
       </header>
     </div>
 
+    <FavoritesModal v-model:is-open="isFavoritesModalOpen" />
+
     <div>
       <main>
-        <div class="bg-white">
+        <div class="bg-white mt-8 sm:mt-16">
           <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
               Title
@@ -141,9 +150,9 @@ watch(
           </div>
         </div>
 
-        <Filters @apply-filters="applyFilters" />
+        <Filters />
 
-        <!-- Product grid -->
+        <!-- Dogs grid -->
         <section
           aria-labelledby="products-heading"
           class="max-w-2xl mx-auto pt-4 pb-4 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
@@ -164,12 +173,18 @@ watch(
           </div>
 
           <div
-            v-show="data?.dogs && !isLoading && !isFetching"
+            v-show="dogsData?.dogs && !isLoading && !isFetching"
             class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
           >
-            <a v-for="dog in data?.dogs" :key="dog.id" href="#" class="group">
+            <button
+              v-for="dog in dogsData?.dogs"
+              :key="dog.id"
+              type="button"
+              class="group"
+            >
               <DogCard :dog="dog" />
-            </a>
+              <!-- <FavoriteDogCard :dog="dog" /> -->
+            </button>
           </div>
 
           <!-- Pagination Bottom -->

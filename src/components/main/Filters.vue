@@ -64,7 +64,7 @@ const applyFilters = () => {
   <Popover
     as="section"
     aria-labelledby="filter-heading"
-    class="relative z-10 border-t border-b border-gray-200 grid items-center"
+    class="relative border-t border-b border-gray-200 grid items-center"
   >
     <h2 id="filter-heading" class="sr-only">Filters</h2>
     <div class="relative col-start-1 row-start-1 py-4">
@@ -90,7 +90,7 @@ const applyFilters = () => {
       </div>
     </div>
     <PopoverPanel
-      class="absolute top-100% w-full border-t border-gray-200 py-0 bg-white"
+      class="absolute z-3 top-100% w-full border-t border-gray-200 py-0 bg-white"
     >
       <div
         class="max-w-7xl mx-auto my-5 grid grid-cols-1 gap-x-4 px-4 text-sm sm:px-6 md:gap-x-6 lg:px-8"
@@ -263,9 +263,3 @@ const applyFilters = () => {
 </template>
 
 <style src="@vueform/slider/themes/default.css"></style>
-<style scoped>
-.age-slider {
-  margin: 1rem auto;
-  --slider-height: 0.75rem;
-}
-</style>

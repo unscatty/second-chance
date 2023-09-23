@@ -46,7 +46,10 @@ export const usePaginationStore = defineStore('pagination', () => {
   })
 
   const hasNextPage = computed(() => {
-    return totalResults.value > paginationRangeMax.value && Boolean(lastPaginationResult.value.next)
+    return (
+      totalResults.value > paginationRangeMax.value &&
+      Boolean(lastPaginationResult.value.next)
+    )
   })
 
   const hasPreviousPage = computed(() => {
