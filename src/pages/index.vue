@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useQuery, useQueryClient } from '@tanstack/vue-query'
+import { useQuery } from '@tanstack/vue-query'
 import authService from '~/services/auth.service'
 import dogService from '~/services/dog.service'
 
-// const filtersStore = useFiltersStore()
 const { filters, sortBy } = storeToRefs(useFiltersStore())
 const paginationStore = usePaginationStore()
-const { handlePaginationResult } = paginationStore
+const { handlePaginationResult, reset: resetPagination } = paginationStore
 const { page, resultSize: paginationResultSize } = storeToRefs(paginationStore)
 
 authService.login({
@@ -41,48 +40,35 @@ const footerNavigation = {
   ],
 }
 
-const source = ref({ hi: 'hi' })
+const {
+  isLoading,
+  isError,
+  data: dogsData,
+  error,
+  isFetching,
+  isPreviousData,
+} = useQuery({
+  queryKey: ['dogs', page, filters, sortBy],
+  queryFn: () =>
+    dogService.search({
+      ...filters.value,
+      sort: sortBy.value,
+      from: (page.value - 1) * paginationResultSize.value,
+      size: paginationResultSize.value,
+    }),
+  keepPreviousData: true,
+  refetchOnWindowFocus: false,
+  staleTime: 60 * 1000 * 15, // 15 minutes to invalidate cache
+})
 
-const lazyFilters = computedWithControl(
-  () => source.value,
-  () => filters.value
-)
-
-const { isLoading, isError, data, error, isFetching, isPreviousData } =
-  useQuery({
-    queryKey: ['dogs', page, filters, sortBy],
-    queryFn: () =>
-      dogService.search({
-        ...filters.value,
-        sort: sortBy.value,
-        from: (page.value - 1) * paginationResultSize.value,
-        size: paginationResultSize.value,
-      }),
-    keepPreviousData: true,
-    refetchOnWindowFocus: false,
-    staleTime: 60 * 1000 * 60, // 1 hour to invalidate the cache
-    // enabled: false,
-  })
-
-// getDogs()
-
-watch(
-  () => data.value,
-  () => {
-    if (data.value) {
-      handlePaginationResult(data.value)
-    }
+watch(dogsData, () => {
+  if (dogsData.value) {
+    handlePaginationResult(dogsData.value)
   }
-)
+})
 
-const applyFilters = () => {
-  // lazyFilters.trigger()
-}
-
-// watchDeep(sortBy, () => getDogs({ exact: true, queryKey: ['dogs', page, filters.value] }))
-// watchDeep(sortBy, () => {
-//   getDogs()
-// })
+// Go back to page 1 if sort by changes
+watchDeep(sortBy, resetPagination)
 </script>
 
 <template>
@@ -161,7 +147,7 @@ const applyFilters = () => {
           </div>
         </div>
 
-        <Filters @apply-filters="applyFilters" />
+        <Filters />
 
         <!-- Product grid -->
         <section
@@ -179,15 +165,20 @@ const applyFilters = () => {
             class="w-full flex justify-center items-center h-64 min-h-64"
           >
             <div
-              class="w-64 h-64 border-16 border-dashed rounded-full animate-spin border-violet-400"
-            ></div>
+              class="w-32 h-32 border-8 sm:w-64 sm:h-64 sm:border-16 border-dashed rounded-full animate-spin border-violet-400 dark:border-white"
+            />
           </div>
 
           <div
-            v-show="data?.dogs && !isLoading && !isFetching"
+            v-show="dogsData?.dogs && !isLoading && !isFetching"
             class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
           >
-            <a v-for="dog in data?.dogs" :key="dog.id" href="#" class="group">
+            <a
+              v-for="dog in dogsData?.dogs"
+              :key="dog.id"
+              href="#"
+              class="group"
+            >
               <DogCard :dog="dog" />
             </a>
           </div>

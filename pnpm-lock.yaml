@@ -20,6 +20,9 @@ dependencies:
   '@unocss/reset':
     specifier: ^0.56.0
     version: 0.56.0
+  '@vueform/slider':
+    specifier: ^2.1.7
+    version: 2.1.7
   '@vueuse/core':
     specifier: ^10.4.1
     version: 10.4.1(vue@3.3.4)
@@ -3748,6 +3751,10 @@ packages:
     transitivePeerDependencies:
       - typescript
     dev: true
+
+  /@vueform/slider@2.1.7:
+    resolution: {integrity: sha512-wKyiVVN03RKTV2vp7r50PDq5hcM4kVVzUO2ex+BAAtrn5oX08iU5NzWTWCuH7dCkiLMDRUVravDu3B0NwaxZMQ==}
+    dev: false
 
   /@vueuse/core@10.4.1(vue@3.3.4):
     resolution: {integrity: sha512-DkHIfMIoSIBjMgRRvdIvxsyboRZQmImofLyOHADqiVbQVilP8VVHDhBX2ZqoItOgu7dWa8oXiNnScOdPLhdEXg==}
