@@ -32,12 +32,15 @@ export class DogService {
   }
 
   async searchIds(queryParams: DogSearchQueryParams) {
-    const { data } = await this.axiosInstance.get<DogSearchResult>('/dogs/search', {
-      params: {
-        ...queryParams,
-        sort: queryParams.sort && this.sortToString(queryParams.sort),
-      },
-    })
+    const { data } = await this.axiosInstance.get<DogSearchResult>(
+      '/dogs/search',
+      {
+        params: {
+          ...queryParams,
+          sort: queryParams.sort && this.sortToString(queryParams.sort),
+        },
+      }
+    )
 
     return data
   }
@@ -51,7 +54,10 @@ export class DogService {
       throw new Error('Cannot fetch more than 100 dogs at a time')
     }
 
-    const { data: dogs } = await this.axiosInstance.post<DogType[]>('/dogs', dogIds)
+    const { data: dogs } = await this.axiosInstance.post<DogType[]>(
+      '/dogs',
+      dogIds
+    )
 
     return dogs
   }
@@ -67,7 +73,10 @@ export class DogService {
   }
 
   async getMatchId(dogIds: string[]) {
-    const { data } = await this.axiosInstance.post<DogMatch>('/dogs/match', dogIds)
+    const { data } = await this.axiosInstance.post<DogMatch>(
+      '/dogs/match',
+      dogIds
+    )
 
     return data
   }
@@ -77,6 +86,18 @@ export class DogService {
     const matchedDogs = await this.getDogsByIds([match])
 
     return matchedDogs[0]
+  }
+
+  async fetchNextPage(nextPageUrl: string) {
+    const {
+      data: { resultIds, ...rest },
+    } = await this.axiosInstance.get<DogSearchResult>(nextPageUrl)
+    const dogs = await this.getDogsByIds(resultIds)
+
+    return {
+      dogs,
+      ...rest,
+    }
   }
 }
 

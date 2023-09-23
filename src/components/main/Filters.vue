@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { useQuery } from '@tanstack/vue-query'
+import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import dogService from '~/services/dog.service'
 import { type DogSearchSortBy } from '~/types'
 
 const { filters } = storeToRefs(useFiltersStore())
+
+const queryClient = useQueryClient()
 
 const { data: dogBreeds } = useQuery({
   queryKey: ['dogBreeds'],
@@ -20,6 +22,10 @@ const sortOptions: Record<DogSearchSortBy['field'], string> = {
 const sortDirections: Record<'asc' | 'desc', string> = {
   asc: 'Ascending',
   desc: 'Descending',
+}
+
+const applyFilters = () => {
+  queryClient.invalidateQueries({ queryKey: ['dogs'] })
 }
 </script>
 
@@ -63,7 +69,10 @@ const sortDirections: Record<'asc' | 'desc', string> = {
           <fieldset>
             <legend class="block font-medium text-black">Breed</legend>
             <div class="flex flex-wrap items-center gap-3">
-              <DogBreedsCombo class="min-w-100% sm:min-w-50%" :breeds="dogBreeds" />
+              <DogBreedsCombo
+                class="min-w-100% sm:min-w-50%"
+                :breeds="dogBreeds"
+              />
               <DogBreedChip
                 v-for="(breed, breedIdx) in filters.breeds"
                 :key="breed"
@@ -123,6 +132,7 @@ const sortDirections: Record<'asc' | 'desc', string> = {
             href="#"
             type="button"
             class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm sm:w-30"
+            @click="applyFilters"
           >
             Apply
           </PopoverButton>

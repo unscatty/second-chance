@@ -15,6 +15,8 @@ export const useFiltersStore = defineStore('filters', () => {
     },
   })
 
+  const resultSize = ref(20)
+
   const setBreeds = (breeds: string[]) => {
     filters.value.breeds = breeds
   }
@@ -26,7 +28,8 @@ export const useFiltersStore = defineStore('filters', () => {
   return {
     filters,
     setBreeds,
-    removeBreed
+    removeBreed,
+    resultSize
   }
 })
 

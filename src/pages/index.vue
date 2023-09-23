@@ -1,4 +1,15 @@
 <script setup lang="ts">
+import { useQuery } from '@tanstack/vue-query'
+import authService from '~/services/auth.service'
+import dogService from '~/services/dog.service'
+
+const { filters, resultSize } = storeToRefs(useFiltersStore())
+
+authService.login({
+  email: 'email-1@email.com',
+  name: 'John',
+})
+
 const footerNavigation = {
   products: [
     { name: 'Fidelidad', href: '#' },
@@ -26,139 +37,30 @@ const footerNavigation = {
   ],
 }
 
-const dogs = [
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_10976.jpg',
-    name: 'Emory',
-    age: 10,
-    breed: 'Chihuahua',
-    zip_code: '48333',
-    id: 'VXGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_11238.jpg',
-    name: 'Jena',
-    age: 8,
-    breed: 'Chihuahua',
-    zip_code: '25275',
-    id: 'V3GFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_11258.jpg',
-    name: 'Jenifer',
-    age: 14,
-    breed: 'Chihuahua',
-    zip_code: '11962',
-    id: 'WHGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1152.jpg',
-    name: 'Carolyne',
-    age: 3,
-    breed: 'Chihuahua',
-    zip_code: '17089',
-    id: 'W3GFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1235.jpg',
-    name: 'Brandy',
-    age: 5,
-    breed: 'Chihuahua',
-    zip_code: '28451',
-    id: 'YnGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1271.jpg',
-    name: 'Seamus',
-    age: 2,
-    breed: 'Chihuahua',
-    zip_code: '09189',
-    id: 'Y3GFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_13383.jpg',
-    name: 'Garnett',
-    age: 0,
-    breed: 'Chihuahua',
-    zip_code: '52630',
-    id: 'aHGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1346.jpg',
-    name: 'Keagan',
-    age: 4,
-    breed: 'Chihuahua',
-    zip_code: '35574',
-    id: 'aXGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_14413.jpg',
-    name: 'Tito',
-    age: 9,
-    breed: 'Chihuahua',
-    zip_code: '46814',
-    id: 'bHGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1455.jpg',
-    name: 'Ila',
-    age: 10,
-    breed: 'Chihuahua',
-    zip_code: '81047',
-    id: 'bnGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1558.jpg',
-    name: 'Tracy',
-    age: 13,
-    breed: 'Chihuahua',
-    zip_code: '71725',
-    id: 'cXGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1617.jpg',
-    name: 'Kylie',
-    age: 1,
-    breed: 'Chihuahua',
-    zip_code: '44222',
-    id: 'c3GFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1620.jpg',
-    name: 'Flo',
-    age: 12,
-    breed: 'Chihuahua',
-    zip_code: '92013',
-    id: 'dHGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1816.jpg',
-    name: 'Emilio',
-    age: 12,
-    breed: 'Chihuahua',
-    zip_code: '07099',
-    id: 'dnGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_1916.jpg',
-    name: 'Julio',
-    age: 8,
-    breed: 'Chihuahua',
-    zip_code: '23435',
-    id: 'eHGFTIcBOvEgQ5OCx40W',
-  },
-  {
-    img: 'https://frontend-take-home.fetch.com/dog-images/n02085620-Chihuahua/n02085620_275.jpg',
-    name: 'Roxanne',
-    age: 11,
-    breed: 'Chihuahua',
-    zip_code: '08020',
-    id: 'h3GFTIcBOvEgQ5OCx40W',
-  },
-]
+const page = ref(1)
 
-const mobileMenuOpen = ref(false)
-const mobileFiltersOpen = ref(false)
+const { isLoading, isError, data, error, isFetching, isPreviousData } =
+  useQuery({
+    queryKey: ['dogs', page, filters.value.sort],
+    queryFn: () =>
+      dogService.search({
+        ...filters.value,
+        from: (page.value - 1) * resultSize.value,
+        size: resultSize.value,
+      }),
+    keepPreviousData: true,
+  })
+
+const nextPage = () => {
+  if (!isPreviousData.value) {
+    page.value = page.value + 1
+  }
+}
+
+const prevPage = () => {
+  page.value = Math.max(page.value - 1, 1)
+}
+
 </script>
 
 <template>
@@ -181,12 +83,8 @@ const mobileFiltersOpen = ref(false)
 
                   <!-- Logo (lg-) -->
                   <a href="#" class="lg:hidden">
-                    <span class="sr-only">Workflow</span>
-                    <img
-                      src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                      alt=""
-                      class="h-8 w-auto"
-                    />
+                    <span class="sr-only">Second Chance</span>
+                    <DogIcon />
                   </a>
 
                   <div class="flex-1 flex items-center justify-end">
@@ -248,12 +146,21 @@ const mobileFiltersOpen = ref(false)
           aria-labelledby="products-heading"
           class="max-w-2xl mx-auto pt-12 pb-16 px-4 sm:pt-16 sm:pb-24 sm:px-6 lg:max-w-7xl lg:px-8"
         >
-          <h2 id="products-heading" class="sr-only">Products</h2>
+          <h2 id="products-heading" class="sr-only">Dogs</h2>
+
+          <!-- Loader -->
+          <div
+            v-show="isLoading || isFetching"
+            class="w-full flex justify-center items-center h-64 min-h-64"
+          >
+            <div class="w-64 h-64 border-16 border-dashed rounded-full animate-spin border-violet-400"></div>
+          </div>
 
           <div
+            v-show="data?.dogs && !isLoading && !isFetching"
             class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
           >
-            <a v-for="dog in dogs" :key="dog.id" href="#" class="group">
+            <a v-for="dog in data?.dogs" :key="dog.id" href="#" class="group">
               <DogCard :dog="dog" />
             </a>
           </div>
@@ -358,8 +265,8 @@ const mobileFiltersOpen = ref(false)
                     id="email-address"
                     type="text"
                     autocomplete="email"
-                    required=""
                     class="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                    required
                   />
                   <div class="ml-4 flex-shrink-0">
                     <button
