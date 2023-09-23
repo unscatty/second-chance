@@ -6,7 +6,7 @@ const { dog } = defineProps<{
   dog: Dog
 }>()
 
-const { age, breed, img: image, name } = toRefs(dog)
+const { age, breed, img: image, name, location } = toRefs(dog)
 
 // ===== Favorites =====
 const favoriteDogsStore = useFavoriteDogsStore()
@@ -36,7 +36,7 @@ const addToFavorites = () => {
       class="absolute w-full h-full bottom-0 bg-gray-900 opacity-0 group-hover:opacity-65"
     />
     <div
-      class="absolute flex items-end justify-center p-4 absolute bottom-0 w-full opacity-0 group-hover:opacity-100"
+      class="absolute flex items-end justify-center p-4 absolute bottom-0 w-full sm:opacity-0 sm:group-hover:opacity-100"
     >
       <button
         class="flex justify-center w-1/2 bg-white bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-gray-900 text-center"
@@ -70,7 +70,19 @@ const addToFavorites = () => {
       </span>
     </p>
   </div>
-  <p class="mt-1 text-sm text-gray-500 text-left">
-    {{ breed }}
-  </p>
+  <div
+    class="mt-2 flex items-center justify-between text-base font-medium text-gray-500 space-x-8"
+  >
+    <p class="text-sm font-italic font-light">
+      {{ breed }}
+    </p>
+    <p>
+      <span
+        class="inline-flex items-center gap-1 px-2 py-0.75 rounded-full text-xs font-bold bg-gray-200 text-gray-800"
+      >
+      <div class="i-heroicons:map-pin-20-solid h-4 w-4"></div>
+        {{ location.city }}
+      </span>
+    </p>
+  </div>
 </template>

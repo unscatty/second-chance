@@ -6,7 +6,7 @@ const { dog } = defineProps<{
   dog: Dog
 }>()
 
-const { age, breed, img: image, name } = toRefs(dog)
+const { age, breed, img: image, name, location } = toRefs(dog)
 
 const emit = defineEmits<{
   (e: 'removeDog', dogId: Dog['id']): void
@@ -22,24 +22,30 @@ const removeDog = () => {
   <div
     class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200"
   >
-    <div class="flex-1 flex flex-col p-8 sm:p-4">
+    <div class="flex-1 flex flex-col p-6 sm:p-4">
       <img
         class="w-32 h-32 flex-shrink-0 mx-auto rounded-full object-center object-cover"
         :src="image"
         alt=""
       />
-      <h3 class="mt-6 text-gray-900 text-sm font-medium">
+      <h3 class="mt-6 text-gray-900 text-xl font-medium">
         {{ name }}
       </h3>
       <dl class="mt-1 flex-grow flex flex-col justify-between">
         <dt class="sr-only">Breed</dt>
         <dd class="text-gray-500 text-sm">{{ breed }}</dd>
         <dt class="sr-only">Age</dt>
-        <dd class="mt-3">
+        <dd class="flex flex-col items-center md:flex-row gap-1 md:justify-center md:flex-wrap mt-3">
           <span
             class="px-4 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800"
             >{{ ageDescription(age) }}</span
           >
+          <span
+            class="inline-flex items-center justify-center gap-1 px-2 py-0.75 rounded-full text-xs font-bold bg-gray-200 text-gray-800"
+          >
+            <div class="i-heroicons:map-pin-20-solid h-4 w-4"></div>
+            {{ location.state }}, {{ location.city }}, {{ location.county }}
+          </span>
         </dd>
       </dl>
     </div>

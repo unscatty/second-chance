@@ -2,13 +2,17 @@ import { type ViteSSGContext } from 'vite-ssg'
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
-export interface Dog {
+export interface DogBase {
   id: string
   img: string
   name: string
   age: number
   zip_code: string
   breed: string
+}
+
+export type Dog = Omit<DogBase, 'zip_code'> & {
+  location: Location
 }
 
 export interface Location {

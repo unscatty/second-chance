@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type Dog as DogType } from '~/types'
+import dogService from '~/services/dog.service'
 
 const favoriteDogsStore = useFavoriteDogsStore()
 const { favoriteDogs } = storeToRefs(favoriteDogsStore)
@@ -10,11 +11,42 @@ const isOpen = defineModel<boolean>('isOpen', { required: true })
 const removeDog = (dogId: DogType['id']) => {
   removeFavoriteDog(dogId)
 }
+
+const isMatchDisabled = computed(() => favoriteDogs.value.length === 0)
+
+const onModalClose = () => {
+  if (isMatchModalOpen.value) {
+    return
+  }
+
+  isOpen.value = false
+}
+
+// ===== Match =====
+const isMatchModalOpen = ref(false)
+const isWaitingForMatch = ref(false)
+const matchedDog = ref<DogType | undefined>(undefined)
+
+const openMatchModal = () => {
+  isMatchModalOpen.value = true
+}
+
+const getMatch = async () => {
+  isWaitingForMatch.value = true
+
+  matchedDog.value = await dogService.match(
+    favoriteDogs.value.map((dog) => dog.id)
+  )
+
+  isWaitingForMatch.value = false
+
+  openMatchModal()
+}
 </script>
 
 <template>
   <TransitionRoot as="template" :show="isOpen">
-    <Dialog as="div" class="fixed z-10 inset-0" @close="isOpen = false">
+    <Dialog as="div" class="fixed z-10 inset-0" @close="onModalClose">
       <div
         class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
       >
@@ -94,10 +126,23 @@ const removeDog = (dogId: DogType['id']) => {
             >
               <button
                 type="button"
-                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                @click="isOpen = false"
+                class="min-w-50 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                :class="{
+                  'opacity-50 cursor-not-allowed': isMatchDisabled,
+                }"
+                :disabled="isMatchDisabled"
+                @click="getMatch"
               >
-                Match!
+                <div v-if="isWaitingForMatch" class="inline-flex gap-2">
+                  <div
+                    class="h-5 w-5 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                    role="status"
+                  />
+                  <p class="font-bold">Finding your match</p>
+                </div>
+                <div v-else>
+                  <p class="font-bold">Match!</p>
+                </div>
               </button>
               <button
                 type="button"
@@ -112,4 +157,7 @@ const removeDog = (dogId: DogType['id']) => {
       </div>
     </Dialog>
   </TransitionRoot>
+
+  <!-- Match Modal -->
+  <MatchModal v-model:is-open="isMatchModalOpen" :matched-dog="matchedDog" />
 </template>

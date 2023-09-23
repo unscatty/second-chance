@@ -5,8 +5,10 @@ import {
   type Match as DogMatch,
   type DogSearchQueryParams,
   type DogSearchSortBy,
+  type DogBase as DogWithZipCode,
   type Dog as DogType,
   type DogSearchResult,
+  type Location,
 } from '~/types'
 
 export class DogService {
@@ -48,7 +50,7 @@ export class DogService {
       throw new Error('Cannot fetch more than 100 dogs at a time')
     }
 
-    const { data: dogs } = await this.axiosInstance.post<DogType[]>(
+    const { data: dogs } = await this.axiosInstance.post<DogWithZipCode[]>(
       '/dogs',
       dogIds
     )
@@ -56,9 +58,40 @@ export class DogService {
     return dogs
   }
 
+  getLocations = async (zipCodes: string[]) => {
+    const { data } = await this.axiosInstance.post<Location[]>(
+      '/locations',
+      zipCodes
+    )
+    return data
+  }
+
+  mergeDogsWithLocations = (
+    dogs: DogWithZipCode[],
+    locations: Location[]
+  ): DogType[] => {
+    const locationMap = locations.reduce<Record<string, Location>>(
+      (acc, location) => {
+        acc[location.zip_code] = location
+        return acc
+      },
+      {}
+    )
+
+    return dogs.map((dog) => ({
+      ...dog,
+      location: locationMap[dog.zip_code],
+    }))
+  }
+
   async search(queryParams: DogSearchQueryParams) {
     const { resultIds, ...rest } = await this.searchIds(queryParams)
-    const dogs = await this.getDogsByIds(resultIds)
+    const dogsWithZipCodes = await this.getDogsByIds(resultIds)
+
+    const zipCodes = dogsWithZipCodes.map((dog) => dog.zip_code)
+    const dogLocations = await this.getLocations(zipCodes)
+
+    const dogs = this.mergeDogsWithLocations(dogsWithZipCodes, dogLocations)
 
     return {
       dogs,
@@ -75,11 +108,18 @@ export class DogService {
     return data
   }
 
-  async match(dogIds: string[]) {
+  async match(dogIds: string[]): Promise<DogType> {
     const { match } = await this.getMatchId(dogIds)
-    const matchedDogs = await this.getDogsByIds([match])
+    const matchedDog = (await this.getDogsByIds([match]))[0]
 
-    return matchedDogs[0]
+    const zipCode = matchedDog.zip_code
+
+    const location = (await this.getLocations([zipCode]))[0]
+
+    return {
+      ...matchedDog,
+      location,
+    }
   }
 
   async fetchNextPage(nextPageUrl: string) {

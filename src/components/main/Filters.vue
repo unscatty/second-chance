@@ -23,6 +23,7 @@ const { data: availableDogBreeds } = useQuery({
   queryKey: ['dogBreeds'],
   queryFn: async () => dogService.getBreeds(),
   initialData: [],
+  staleTime: 60 * 1000 * 10, // 10 minutes
 })
 
 const ageRange = ref([
