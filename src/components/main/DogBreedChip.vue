@@ -1,10 +1,12 @@
 <script setup lang="ts">
 const { breed, breedIndex } = defineProps<{
-  breed: string,
-  breedIndex: number,
+  breed: string
+  breedIndex: number
 }>()
 
-const { removeBreed } = useFiltersStore()
+const emit = defineEmits<{
+  removeBreed: [breedIndex: number]
+}>()
 </script>
 
 <template>
@@ -15,7 +17,7 @@ const { removeBreed } = useFiltersStore()
     <button
       type="button"
       class="flex-shrink-0 ml-0.5 h-4 w-4 rounded-full inline-flex items-center justify-center text-indigo-400 hover:bg-indigo-200 hover:text-indigo-500 focus:outline-none focus:bg-indigo-500 focus:text-white"
-      @click="removeBreed(breedIndex)"
+      @click="emit('removeBreed', breedIndex)"
     >
       <span class="sr-only">Remove breed</span>
       <svg class="h-2 w-2" stroke="currentColor" fill="none" viewBox="0 0 8 8">

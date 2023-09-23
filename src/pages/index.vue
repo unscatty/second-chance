@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { useQuery } from '@tanstack/vue-query'
+import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import authService from '~/services/auth.service'
 import dogService from '~/services/dog.service'
 
-const { filters, resultSize } = storeToRefs(useFiltersStore())
+// const filtersStore = useFiltersStore()
+const { filters, sortBy } = storeToRefs(useFiltersStore())
+const paginationStore = usePaginationStore()
+const { handlePaginationResult } = paginationStore
+const { page, resultSize: paginationResultSize } = storeToRefs(paginationStore)
 
 authService.login({
   email: 'email-1@email.com',
@@ -37,30 +41,48 @@ const footerNavigation = {
   ],
 }
 
-const page = ref(1)
+const source = ref({ hi: 'hi' })
+
+const lazyFilters = computedWithControl(
+  () => source.value,
+  () => filters.value
+)
 
 const { isLoading, isError, data, error, isFetching, isPreviousData } =
   useQuery({
-    queryKey: ['dogs', page, filters.value.sort],
+    queryKey: ['dogs', page, filters, sortBy],
     queryFn: () =>
       dogService.search({
         ...filters.value,
-        from: (page.value - 1) * resultSize.value,
-        size: resultSize.value,
+        sort: sortBy.value,
+        from: (page.value - 1) * paginationResultSize.value,
+        size: paginationResultSize.value,
       }),
     keepPreviousData: true,
+    refetchOnWindowFocus: false,
+    staleTime: 60 * 1000 * 60, // 1 hour to invalidate the cache
+    // enabled: false,
   })
 
-const nextPage = () => {
-  if (!isPreviousData.value) {
-    page.value = page.value + 1
+// getDogs()
+
+watch(
+  () => data.value,
+  () => {
+    if (data.value) {
+      handlePaginationResult(data.value)
+    }
   }
+)
+
+const applyFilters = () => {
+  // lazyFilters.trigger()
 }
 
-const prevPage = () => {
-  page.value = Math.max(page.value - 1, 1)
-}
-
+// watchDeep(sortBy, () => getDogs({ exact: true, queryKey: ['dogs', page, filters.value] }))
+// watchDeep(sortBy, () => {
+//   getDogs()
+// })
 </script>
 
 <template>
@@ -139,21 +161,26 @@ const prevPage = () => {
           </div>
         </div>
 
-        <Filters />
+        <Filters @apply-filters="applyFilters" />
 
         <!-- Product grid -->
         <section
           aria-labelledby="products-heading"
-          class="max-w-2xl mx-auto pt-12 pb-16 px-4 sm:pt-16 sm:pb-24 sm:px-6 lg:max-w-7xl lg:px-8"
+          class="max-w-2xl mx-auto pt-4 pb-4 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
         >
           <h2 id="products-heading" class="sr-only">Dogs</h2>
+
+          <!-- Pagination Top -->
+          <Pagination class="mb-2" :is-previous-data="isPreviousData" />
 
           <!-- Loader -->
           <div
             v-show="isLoading || isFetching"
             class="w-full flex justify-center items-center h-64 min-h-64"
           >
-            <div class="w-64 h-64 border-16 border-dashed rounded-full animate-spin border-violet-400"></div>
+            <div
+              class="w-64 h-64 border-16 border-dashed rounded-full animate-spin border-violet-400"
+            ></div>
           </div>
 
           <div
@@ -164,6 +191,9 @@ const prevPage = () => {
               <DogCard :dog="dog" />
             </a>
           </div>
+
+          <!-- Pagination Bottom -->
+          <Pagination class="mt-8" :is-previous-data="isPreviousData" />
         </section>
       </main>
 

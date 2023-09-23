@@ -34,13 +34,25 @@ export interface DogSearchSortBy {
   direction: 'asc' | 'desc'
 }
 
-export type DogSearchQueryParams = Partial<{
+export interface DogSearchFilterQueryParams {
   breeds: string[]
   zipCodes: string[]
   ageMin: number
   ageMax: number
-  // Additional query params
-  size: number
-  from: number
-  sort: DogSearchSortBy
-}>
+}
+
+export type DogSearchQueryParams = Partial<
+  DogSearchFilterQueryParams & {
+    // Additional query params
+    size: number
+    from: number
+    sort: DogSearchSortBy
+  }
+>
+
+export interface DogSearchResult {
+  resultIds: string[]
+  total: number
+  next: string | null
+  prev: string | null
+}

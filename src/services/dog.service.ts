@@ -6,14 +6,8 @@ import {
   type DogSearchQueryParams,
   type DogSearchSortBy,
   type Dog as DogType,
+  type DogSearchResult,
 } from '~/types'
-
-interface DogSearchResult {
-  resultIds: string[]
-  total: number
-  next: string | null
-  prev: string | null
-}
 
 export class DogService {
   private axiosInstance: AxiosInstance

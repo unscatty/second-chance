@@ -27,6 +27,10 @@
     "src/shims.d.ts",
     "src/client.d.ts"
   ],
+  "globals": {
+    "defineOptions": "readonly",
+    "defineModel": "readonly"
+  },
   "rules": {
     "vue/no-unused-vars": "off",
     "vue/multi-word-component-names": "off",

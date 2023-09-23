@@ -3,7 +3,9 @@ const { breeds } = defineProps<{
   breeds: string[]
 }>()
 
-const { filters } = storeToRefs(useFiltersStore())
+const selectedDogBreeds = defineModel<string[]>('selectedDogBreeds', { required: true })
+
+// const { filters } = storeToRefs(useFiltersStore())
 
 const query = ref('')
 const filteredBreeds = computed(() =>
@@ -16,7 +18,7 @@ const filteredBreeds = computed(() =>
 </script>
 
 <template>
-  <Combobox v-model="filters.breeds" as="div" multiple>
+  <Combobox v-model="selectedDogBreeds" as="div" multiple>
     <div class="relative">
       <ComboboxInput
         class="w-full text-gray-900 rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"

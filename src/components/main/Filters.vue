@@ -1,13 +1,24 @@
 <script setup lang="ts">
-import { useQuery, useQueryClient } from '@tanstack/vue-query'
+import { useQuery } from '@tanstack/vue-query'
+import { UnwrapRef } from 'vue'
 import dogService from '~/services/dog.service'
-import { type DogSearchSortBy } from '~/types'
+import { type DogSearchSortBy, type DogSearchFilterQueryParams } from '~/types'
 
-const { filters } = storeToRefs(useFiltersStore())
+const defaultFilters: DogSearchFilterQueryParams = {
+  breeds: [],
+  zipCodes: [],
+  ageMin: 0,
+  ageMax: 30,
+}
 
-const queryClient = useQueryClient()
+const { filters, sortBy } = storeToRefs(useFiltersStore())
+const { reset: resetPagination } = usePaginationStore()
 
-const { data: dogBreeds } = useQuery({
+const selectedFilters = ref<UnwrapRef<typeof filters>>(
+  structuredClone(toRaw(filters.value))
+)
+
+const { data: availableDogBreeds } = useQuery({
   queryKey: ['dogBreeds'],
   queryFn: async () => dogService.getBreeds(),
   initialData: [],
@@ -24,8 +35,21 @@ const sortDirections: Record<'asc' | 'desc', string> = {
   desc: 'Descending',
 }
 
+const removeBreed = (breedIndex: number) => {
+  selectedFilters.value.breeds.splice(breedIndex, 1)
+}
+
+const clearFilters = () => {
+  selectedFilters.value = structuredClone(defaultFilters)
+
+  applyFilters()
+}
+
 const applyFilters = () => {
-  queryClient.invalidateQueries({ queryKey: ['dogs'] })
+  resetPagination()
+
+  filters.value = structuredClone(toRaw(selectedFilters.value))
+  // filters.value = selectedFilters.value
 }
 </script>
 
@@ -53,7 +77,9 @@ const applyFilters = () => {
           </PopoverButton>
         </div>
         <div class="pl-6">
-          <button type="button" class="text-gray-500">Clear all</button>
+          <button type="button" class="text-gray-500" @click="clearFilters">
+            Clear all
+          </button>
         </div>
       </div>
     </div>
@@ -70,14 +96,16 @@ const applyFilters = () => {
             <legend class="block font-medium text-black">Breed</legend>
             <div class="flex flex-wrap items-center gap-3">
               <DogBreedsCombo
+                v-model:selected-dog-breeds="selectedFilters.breeds"
                 class="min-w-100% sm:min-w-50%"
-                :breeds="dogBreeds"
+                :breeds="availableDogBreeds"
               />
               <DogBreedChip
-                v-for="(breed, breedIdx) in filters.breeds"
+                v-for="(breed, breedIdx) in selectedFilters.breeds"
                 :key="breed"
                 :breed="breed"
                 :breed-index="breedIdx"
+                @remove-breed="removeBreed"
               />
             </div>
             <!-- Here add chips -->
@@ -95,7 +123,7 @@ const applyFilters = () => {
                 <div class="mt-1">
                   <input
                     id="ageMin"
-                    v-model="filters.ageMin"
+                    v-model="selectedFilters.ageMin"
                     type="number"
                     name="ageMin"
                     class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md text-black"
@@ -114,7 +142,7 @@ const applyFilters = () => {
                 <div class="mt-1">
                   <input
                     id="ageMax"
-                    v-model="filters.ageMax"
+                    v-model="selectedFilters.ageMax"
                     type="number"
                     name="ageMax"
                     class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md text-black"
@@ -151,7 +179,7 @@ const applyFilters = () => {
                 <MenuButton
                   class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
                 >
-                  {{ sortOptions[filters.sort!.field] }}
+                  {{ sortOptions[sortBy.field] }}
                   <div
                     class="i-heroicons:chevron-down-20-solid flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
@@ -175,13 +203,13 @@ const applyFilters = () => {
                       v-for="(fieldName, key) in sortOptions"
                       :key="key"
                       v-slot="{ active }"
-                      @click="filters.sort!.field = key"
+                      @click="sortBy.field = key"
                     >
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm"
                         :class="[
-                          key === filters.sort?.field
+                          key === sortBy.field
                             ? 'font-medium text-gray-900'
                             : 'text-gray-500',
                           active ? 'bg-gray-100' : '',
@@ -199,7 +227,7 @@ const applyFilters = () => {
                 <MenuButton
                   class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
                 >
-                  {{ sortDirections[filters.sort!.direction] }}
+                  {{ sortDirections[sortBy.direction] }}
                   <div
                     class="i-heroicons:chevron-down-20-solid flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
@@ -223,13 +251,13 @@ const applyFilters = () => {
                       v-for="(directionName, key) in sortDirections"
                       :key="key"
                       v-slot="{ active }"
-                      @click="filters.sort!.direction = key"
+                      @click="sortBy.direction = key"
                     >
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm"
                         :class="[
-                          key === filters.sort?.direction
+                          key === sortBy.direction
                             ? 'font-medium text-gray-900'
                             : 'text-gray-500',
                           active ? 'bg-gray-100' : '',
