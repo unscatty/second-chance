@@ -1,0 +1,420 @@
+{
+  "\u0000/home/runner/work/second-chance/second-chance/node_modules/.pnpm/nprogress@0.2.0/node_modules/nprogress/nprogress.js?commonjs-module": [
+  ],
+  "\u0000commonjsHelpers.js": [
+  ],
+  "\u0000plugin-vue:export-helper": [
+  ],
+  "\u0000vite/modulepreload-polyfill": [
+  ],
+  "\u0000vite/preload-helper": [
+  ],
+  "../../../../../@vite-plugin-pages/generated-pages?id=~pages": [
+  ],
+  "../../../../../@vite-plugin-pages/route-block": [
+  ],
+  "../../../../../@vite-plugin-pwa/virtual:pwa-register": [
+    "/second-chance/assets/virtual_pwa-register-8aec3b2a.js"
+  ],
+  "../../../../../@vite-plugin-vue-layouts/generated-layouts": [
+  ],
+  "../../../../../__uno.css": [
+  ],
+  "../../../../../happy-dog.jpg": [
+  ],
+  "assets/app-!~{001}~.js-unocss-hash.css": [
+  ],
+  "index.html": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/combobox/combobox.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/description/description.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/dialog/dialog.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/focus-trap/focus-trap.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/menu/menu.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/popover/popover.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/portal/portal.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/transitions/transition.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/components/transitions/utils/transition.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/document-overflow/adjust-scrollbar-padding.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/document-overflow/handle-ios-locking.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/document-overflow/overflow-store.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/document-overflow/prevent-scroll.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/document-overflow/use-document-overflow.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-controllable.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-document-event.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-event-listener.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-id.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-inert.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-outside-click.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-resolve-button-type.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-root-containers.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-store.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-tab-direction.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-text-value.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-tracked-pointer.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-tree-walker.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/hooks/use-window-event.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/internal/hidden.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/internal/open-closed.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/internal/portal-force-root.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/internal/stack-context.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/keyboard.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/calculate-active-index.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/disposables.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/document-ready.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/dom.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/env.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/focus-management.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/form.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/get-text-value.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/match.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/micro-task.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/once.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/owner.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/platform.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/render.js": [
+  ],
+  "node_modules/.pnpm/@headlessui+vue@1.7.16_vue@3.3.4/node_modules/@headlessui/vue/dist/utils/store.js": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/focusManager.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/infiniteQueryBehavior.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/logger.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/mutation.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/mutationCache.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/notifyManager.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/onlineManager.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/query.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/queryCache.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/queryClient.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/queryObserver.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/removable.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/retryer.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/subscribable.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+query-core@4.35.3/node_modules/@tanstack/query-core/build/lib/utils.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+vue-query@4.35.3_vue@3.3.4/node_modules/@tanstack/vue-query/build/lib/mutationCache.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+vue-query@4.35.3_vue@3.3.4/node_modules/@tanstack/vue-query/build/lib/queryCache.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+vue-query@4.35.3_vue@3.3.4/node_modules/@tanstack/vue-query/build/lib/queryClient.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+vue-query@4.35.3_vue@3.3.4/node_modules/@tanstack/vue-query/build/lib/useBaseQuery.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+vue-query@4.35.3_vue@3.3.4/node_modules/@tanstack/vue-query/build/lib/useQuery.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+vue-query@4.35.3_vue@3.3.4/node_modules/@tanstack/vue-query/build/lib/useQueryClient.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+vue-query@4.35.3_vue@3.3.4/node_modules/@tanstack/vue-query/build/lib/utils.mjs": [
+  ],
+  "node_modules/.pnpm/@tanstack+vue-query@4.35.3_vue@3.3.4/node_modules/@tanstack/vue-query/build/lib/vueQueryPlugin.mjs": [
+  ],
+  "node_modules/.pnpm/@unhead+dom@1.7.4/node_modules/@unhead/dom/dist/index.mjs": [
+  ],
+  "node_modules/.pnpm/@unhead+shared@1.7.4/node_modules/@unhead/shared/dist/index.mjs": [
+  ],
+  "node_modules/.pnpm/@unhead+vue@1.7.4_vue@3.3.4/node_modules/@unhead/vue/dist/shared/vue.cf295fb1.mjs": [
+  ],
+  "node_modules/.pnpm/@unhead+vue@1.7.4_vue@3.3.4/node_modules/@unhead/vue/dist/shared/vue.f36acd1f.mjs": [
+  ],
+  "node_modules/.pnpm/@unocss+reset@0.56.0/node_modules/@unocss/reset/tailwind.css": [
+  ],
+  "node_modules/.pnpm/@vue+reactivity@3.3.4/node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": [
+  ],
+  "node_modules/.pnpm/@vue+runtime-core@3.3.4/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js": [
+  ],
+  "node_modules/.pnpm/@vue+runtime-dom@3.3.4/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js": [
+  ],
+  "node_modules/.pnpm/@vue+shared@3.3.4/node_modules/@vue/shared/dist/shared.esm-bundler.js": [
+  ],
+  "node_modules/.pnpm/@vueform+slider@2.1.7_patch_hash=27iyyca2us3gygrlpqrpc3ga34/node_modules/@vueform/slider/dist/slider.js": [
+  ],
+  "node_modules/.pnpm/@vueform+slider@2.1.7_patch_hash=27iyyca2us3gygrlpqrpc3ga34/node_modules/@vueform/slider/themes/default.css?vue&type=style&index=0&src=true&lang.css": [
+  ],
+  "node_modules/.pnpm/@vueuse+core@10.4.1_vue@3.3.4/node_modules/@vueuse/core/index.mjs": [
+  ],
+  "node_modules/.pnpm/@vueuse+shared@10.4.1_vue@3.3.4/node_modules/@vueuse/shared/index.mjs": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/adapters/adapters.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/adapters/xhr.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/axios.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/cancel/CancelToken.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/cancel/CanceledError.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/cancel/isCancel.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/Axios.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/AxiosError.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/AxiosHeaders.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/InterceptorManager.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/buildFullPath.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/dispatchRequest.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/mergeConfig.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/settle.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/core/transformData.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/defaults/index.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/defaults/transitional.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/env/data.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/AxiosURLSearchParams.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/HttpStatusCode.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/bind.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/buildURL.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/combineURLs.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/cookies.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/formDataToJSON.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/isAbsoluteURL.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/isAxiosError.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/isURLSameOrigin.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/null.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/parseHeaders.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/parseProtocol.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/speedometer.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/spread.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/toFormData.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/toURLEncodedForm.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/helpers/validator.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/platform/browser/classes/Blob.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/platform/browser/classes/FormData.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/platform/browser/classes/URLSearchParams.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/platform/browser/index.js": [
+  ],
+  "node_modules/.pnpm/axios@1.5.0/node_modules/axios/lib/utils.js": [
+  ],
+  "node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs": [
+  ],
+  "node_modules/.pnpm/nprogress@0.2.0/node_modules/nprogress/nprogress.js": [
+  ],
+  "node_modules/.pnpm/pinia@2.1.6_typescript@5.2.2_vue@3.3.4/node_modules/pinia/dist/pinia.mjs": [
+  ],
+  "node_modules/.pnpm/unhead@1.7.4/node_modules/unhead/dist/index.mjs": [
+  ],
+  "node_modules/.pnpm/vite-ssg@0.23.3_critters@0.0.20_vite@4.4.9_vue-router@4.2.4_vue@3.3.4/node_modules/vite-ssg/dist/index.mjs": [
+  ],
+  "node_modules/.pnpm/vite-ssg@0.23.3_critters@0.0.20_vite@4.4.9_vue-router@4.2.4_vue@3.3.4/node_modules/vite-ssg/dist/shared/vite-ssg.5912142e.mjs": [
+  ],
+  "node_modules/.pnpm/vite-ssg@0.23.3_critters@0.0.20_vite@4.4.9_vue-router@4.2.4_vue@3.3.4/node_modules/vite-ssg/dist/shared/vite-ssg.a009fbf1.mjs": [
+  ],
+  "node_modules/.pnpm/vue-demi@0.14.6_vue@3.3.4/node_modules/vue-demi/lib/index.mjs": [
+  ],
+  "node_modules/.pnpm/vue-router@4.2.4_vue@3.3.4/node_modules/vue-router/dist/vue-router.mjs": [
+  ],
+  "node_modules/.pnpm/workbox-window@7.0.0/node_modules/workbox-window/build/workbox-window.prod.es5.mjs": [
+    "/second-chance/assets/workbox-window.prod.es5-a7b12eab.js"
+  ],
+  "src/App.vue?vue&type=script&setup=true&lang.ts": [
+  ],
+  "src/components/auth/Login.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/auth-698ca876.js"
+  ],
+  "src/components/common/AlertInfo.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/AlertInfo.vue_vue_type_script_setup_true_lang-0f1dcfd1.js"
+  ],
+  "src/components/common/DogIcon.vue": [
+    "/second-chance/assets/DogIcon-2b7a6894.js"
+  ],
+  "src/components/common/Footer.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/components/common/nav/NavUserMenu.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/components/common/nav/Navbar.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/components/main/ErrorAlert.vue?vue&type=script&setup=true&lang.ts": [
+  ],
+  "src/components/main/Hero.vue": [
+  ],
+  "src/components/main/dogs-grid/DogCard.vue?vue&type=script&setup=true&lang.ts": [
+  ],
+  "src/components/main/dogs-grid/Pagination.vue?vue&type=script&setup=true&lang.ts": [
+  ],
+  "src/components/main/favorites/FavoriteDogCard.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/components/main/favorites/FavoritesModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/components/main/filters/Filters.vue?vue&type=script&setup=true&lang.ts": [
+  ],
+  "src/components/main/filters/breed-combo/DogBreedChip.vue?vue&type=script&setup=true&lang.ts": [
+  ],
+  "src/components/main/filters/breed-combo/DogBreedsCombo.vue?vue&type=script&setup=true&lang.ts": [
+  ],
+  "src/components/main/match/ConfettiIcon.vue": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/components/main/match/MatchCard.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/components/main/match/MatchModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/composables/dark.ts": [
+  ],
+  "src/composables/dogSearch.ts": [
+  ],
+  "src/layouts/auth.vue": [
+    "/second-chance/assets/auth-3e87d7a4.js"
+  ],
+  "src/layouts/default.vue": [
+  ],
+  "src/layouts/main.vue": [
+    "/second-chance/assets/main-b537f192.js"
+  ],
+  "src/main.ts": [
+  ],
+  "src/modules/nprogress.ts": [
+  ],
+  "src/modules/pinia.ts": [
+  ],
+  "src/modules/pwa.ts": [
+  ],
+  "src/modules/router-auth.ts": [
+  ],
+  "src/modules/vue-query.ts": [
+  ],
+  "src/pages/[...all].vue": [
+    "/second-chance/assets/_...all_-69c9930a.js"
+  ],
+  "src/pages/auth.vue": [
+    "/second-chance/assets/auth-698ca876.js"
+  ],
+  "src/pages/auth.vue?vue&type=script&setup=true&lang.ts": [
+    "/second-chance/assets/auth-698ca876.js"
+  ],
+  "src/pages/index.vue": [
+  ],
+  "src/pages/index.vue?vue&type=script&setup=true&lang.ts": [
+  ],
+  "src/services/auth.service.ts": [
+  ],
+  "src/services/dog.service.ts": [
+  ],
+  "src/stores/alert-info.ts": [
+  ],
+  "src/stores/authStore.ts": [
+  ],
+  "src/stores/favorite-dogs.ts": [
+  ],
+  "src/stores/filters.ts": [
+  ],
+  "src/stores/pagination.ts": [
+  ],
+  "src/styles/main.css": [
+  ],
+  "src/utils/dogInfo.ts": [
+  ]
+}

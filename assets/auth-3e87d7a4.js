@@ -1,0 +1,1 @@
+import{_ as n}from"./AlertInfo.vue_vue_type_script_setup_true_lang-0f1dcfd1.js";import{a as r,r as c,o as a,c as s,b as e,F as _}from"./app-6df80844.js";const m={};function f(l,p){const o=n,t=c("RouterView");return a(),s(_,null,[e(o),e(t)],64)}const d=r(m,[["render",f]]);export{d as default};
