@@ -6,34 +6,45 @@ Go to site https://unscatty.github.io/second-chance/
 
 ## How to run this project locally
 
-Clone the repo
+#### Clone the repo
 
 ```bash
 git clone https://github.com/unscatty/second-chance/
 ```
-
-Go to the project directory
+#### Go to the project directory
 
 ```bash
 cd second-chance
 ```
 
-
-Install `pnpm`
+#### Install `pnpm`
 
 ```bash
 npm install -g pnpm
 ```
-
 or read the docs [here](https://pnpm.io/installation)
 
-Install dependencies
+#### Install dependencies
 
 ```bash
 pnpm install
 ```
+#### Add environment variables
 
-Run the project
+Example `.env.local` file
+
+
+```bash
+cp .env.example .env.local
+```
+```bash
+VITE_DOGS_ENDPOINT='https://frontend-take-home-service.fetch.com'
+```
+
+Modify the `VITE_DOGS_ENDPOINT` variable inside `.env.local` file to point to the correct endpoint.
+
+
+#### Run the project
 
 ```bash
 pnpm run dev
