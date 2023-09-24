@@ -1,0 +1,11 @@
+diff --git a/package.json b/package.json
+index 1cdcf48b5ebc23035d85ba1b0c16c6ca5229b88e..31396e8df227068ae58847544f4a2d5cf3eec757 100755
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,6 @@
+ {
+   "name": "@vueform/slider",
++  "type": "module",
+   "version": "2.1.7",
+   "private": false,
+   "description": "Vue 3 slider component with multihandles, tooltips merging and formatting.",

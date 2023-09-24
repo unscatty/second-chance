@@ -86,5 +86,10 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@vueform/slider@2.1.7": "patches/@vueform__slider@2.1.7.patch"
+    }
   }
 }

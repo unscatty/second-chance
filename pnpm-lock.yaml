@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@vueform/slider@2.1.7':
+    hash: 27iyyca2us3gygrlpqrpc3ga34
+    path: patches/@vueform__slider@2.1.7.patch
+
 dependencies:
   '@headlessui/vue':
     specifier: ^1.7.16
@@ -22,7 +27,7 @@ dependencies:
     version: 0.56.0
   '@vueform/slider':
     specifier: ^2.1.7
-    version: 2.1.7
+    version: 2.1.7(patch_hash=27iyyca2us3gygrlpqrpc3ga34)
   '@vueuse/core':
     specifier: ^10.4.1
     version: 10.4.1(vue@3.3.4)
@@ -3752,9 +3757,10 @@ packages:
       - typescript
     dev: true
 
-  /@vueform/slider@2.1.7:
+  /@vueform/slider@2.1.7(patch_hash=27iyyca2us3gygrlpqrpc3ga34):
     resolution: {integrity: sha512-wKyiVVN03RKTV2vp7r50PDq5hcM4kVVzUO2ex+BAAtrn5oX08iU5NzWTWCuH7dCkiLMDRUVravDu3B0NwaxZMQ==}
     dev: false
+    patched: true
 
   /@vueuse/core@10.4.1(vue@3.3.4):
     resolution: {integrity: sha512-DkHIfMIoSIBjMgRRvdIvxsyboRZQmImofLyOHADqiVbQVilP8VVHDhBX2ZqoItOgu7dWa8oXiNnScOdPLhdEXg==}
