@@ -129,8 +129,8 @@ export default defineConfig(({ command, mode }) => {
         registerType: 'autoUpdate',
         includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
         manifest: {
-          name: 'Vitesse',
-          short_name: 'Vitesse',
+          name: 'Second Chance',
+          short_name: 'Second Chance',
           theme_color: '#ffffff',
           icons: [
             {
