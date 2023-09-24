@@ -4,14 +4,8 @@ import { type Dog } from '~/types'
 export const useFavoriteDogsStore = defineStore('favoriteDogs', () => {
   const favoriteDogs = ref<Dog[]>([])
 
-  // Fake fogs data
-  const { data: dogsData } = useDogSearch('dogs')
-  const fakeFavoriteDogs = computed(() => dogsData.value?.dogs.slice(0, 20))
-
   const totalFavorites = computed(() => {
     return favoriteDogs.value.length
-    // FIXME: fake data
-    // return fakeFavoriteDogs.value?.length || 0
   })
 
   const addFavoriteDog = (dog: Dog) => {
@@ -38,7 +32,6 @@ export const useFavoriteDogsStore = defineStore('favoriteDogs', () => {
     removeFavoriteDog,
     isFavoriteDog,
     totalFavorites,
-    fakeFavoriteDogs,
   }
 })
 
