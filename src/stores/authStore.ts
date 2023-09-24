@@ -24,7 +24,7 @@ export const useAuthStore = defineStore('auth', () => {
   const logout = async () => {
     await authService.logout()
     // Update session expiration
-    sessionExpiration.value = new Date().getTime()
+    sessionExpiration.value = 0
   }
 
   return {
