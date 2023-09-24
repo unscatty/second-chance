@@ -25,6 +25,7 @@ declare module 'vue' {
     FavoriteDogCard: typeof import('./components/main/favorites/FavoriteDogCard.vue')['default']
     FavoritesModal: typeof import('./components/main/favorites/FavoritesModal.vue')['default']
     Filters: typeof import('./components/main/Filters.vue')['default']
+    Footer: typeof import('./components/Footer.vue')['default']
     Hero: typeof import('./components/main/Hero.vue')['default']
     Login: typeof import('./components/auth/Login.vue')['default']
     MatchCard: typeof import('./components/main/match/MatchCard.vue')['default']

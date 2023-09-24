@@ -36,6 +36,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.43.0",
     "@iconify-json/carbon": "^1.1.21",
+    "@iconify-json/cib": "^1.1.5",
     "@iconify-json/heroicons": "^1.1.12",
     "@intlify/unplugin-vue-i18n": "^1.2.0",
     "@pinia/testing": "^0.1.3",

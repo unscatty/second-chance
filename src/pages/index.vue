@@ -4,33 +4,6 @@ const { sortBy } = storeToRefs(useFiltersStore())
 const paginationStore = usePaginationStore()
 const { handlePaginationResult, reset: resetPagination } = paginationStore
 
-const footerNavigation = {
-  products: [
-    { name: 'Fidelidad', href: '#' },
-    { name: 'Descerebración', href: '#' },
-    { name: 'Abaldonamiento', href: '#' },
-    { name: 'Increíblemente', href: '#' },
-    { name: 'Bateaguas', href: '#' },
-  ],
-  company: [
-    { name: 'Batanear', href: '#' },
-    { name: 'Batanear', href: '#' },
-    { name: 'Descentralizador', href: '#' },
-    { name: 'Descercar', href: '#' },
-    { name: 'Engarzar', href: '#' },
-    { name: 'Batahola', href: '#' },
-  ],
-  customerService: [
-    { name: 'Increíblemente', href: '#' },
-    { name: 'Batea', href: '#' },
-    { name: 'Batallón', href: '#' },
-    { name: 'Gemíparo', href: '#' },
-    { name: 'Gemoso', href: '#' },
-    { name: 'Fichero', href: '#' },
-    { name: 'Abada', href: '#' },
-  ],
-}
-
 const {
   isLoading,
   data: dogsData,
@@ -66,11 +39,18 @@ const isFavoritesModalOpen = ref(false)
               <div class="border-b border-gray-200">
                 <div class="h-16 flex items-center justify-between">
                   <!-- Logo (lg+) -->
-                  <div class="hidden lg:flex lg:items-center">
+                  <div
+                    class="hidden lg:flex lg:items-center justify-start gap-2"
+                  >
                     <a href="/" class="text-gray-9">
                       <span class="sr-only">Second Chance</span>
                       <DogIcon />
                     </a>
+                    <p class="text-center">
+                      <span class="text-xl font-black text-gray-9 uppercase">
+                        Second Chance
+                      </span>
+                    </p>
                   </div>
 
                   <!-- Logo (lg-) -->
@@ -109,7 +89,8 @@ const isFavoritesModalOpen = ref(false)
                           @click="isFavoritesModalOpen = true"
                         >
                           <div
-                            class="i-heroicons:heart flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                            class="i-heroicons:heart flex-shrink-0 h-6 w-6 text-gray-400"
+                            group-hover="i-heroicons-heart-20-solid h-6 w-6 text-gray-500"
                             aria-hidden="true"
                           />
                           <span class="sr-only">favorite dogs</span>
@@ -184,127 +165,8 @@ const isFavoritesModalOpen = ref(false)
         </section>
       </main>
 
-      <footer
-        aria-labelledby="footer-heading"
-        class="bg-white border-t border-gray-200"
-      >
-        <h2 id="footer-heading" class="sr-only">Footer</h2>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="py-20">
-            <div
-              class="grid grid-cols-1 md:grid-cols-12 md:grid-flow-col md:gap-x-8 md:gap-y-16 md:auto-rows-min"
-            >
-              <!-- Image section -->
-              <div
-                class="col-span-1 md:col-span-2 lg:row-start-1 lg:col-start-1"
-              >
-                <DogIcon />
-              </div>
-
-              <!-- Sitemap sections -->
-              <div
-                class="mt-10 col-span-6 grid grid-cols-2 gap-8 sm:grid-cols-3 md:mt-0 md:row-start-1 md:col-start-3 md:col-span-8 lg:col-start-2 lg:col-span-6"
-              >
-                <div
-                  class="grid grid-cols-1 gap-y-12 sm:col-span-2 sm:grid-cols-2 sm:gap-x-8"
-                >
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-900">Products</h3>
-                    <ul role="list" class="mt-6 space-y-6">
-                      <li
-                        v-for="item in footerNavigation.products"
-                        :key="item.name"
-                        class="text-sm"
-                      >
-                        <a
-                          :href="item.href"
-                          class="text-gray-500 hover:text-gray-600"
-                        >
-                          {{ item.name }}
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-900">Company</h3>
-                    <ul role="list" class="mt-6 space-y-6">
-                      <li
-                        v-for="item in footerNavigation.company"
-                        :key="item.name"
-                        class="text-sm"
-                      >
-                        <a
-                          :href="item.href"
-                          class="text-gray-500 hover:text-gray-600"
-                        >
-                          {{ item.name }}
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div>
-                  <h3 class="text-sm font-medium text-gray-900">
-                    Customer Service
-                  </h3>
-                  <ul role="list" class="mt-6 space-y-6">
-                    <li
-                      v-for="item in footerNavigation.customerService"
-                      :key="item.name"
-                      class="text-sm"
-                    >
-                      <a
-                        :href="item.href"
-                        class="text-gray-500 hover:text-gray-600"
-                      >
-                        {{ item.name }}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Newsletter section -->
-              <div
-                class="mt-12 md:mt-0 md:row-start-2 md:col-start-3 md:col-span-8 lg:row-start-1 lg:col-start-9 lg:col-span-4"
-              >
-                <h3 class="text-sm font-medium text-gray-900">
-                  Sign up for our newsletter
-                </h3>
-                <p class="mt-6 text-sm text-gray-500">
-                  The latest deals and savings, sent to your inbox weekly.
-                </p>
-                <form class="mt-2 flex sm:max-w-md">
-                  <label for="email-address" class="sr-only"
-                    >Email address</label
-                  >
-                  <input
-                    id="email-address"
-                    type="text"
-                    autocomplete="email"
-                    class="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                    required
-                  />
-                  <div class="ml-4 flex-shrink-0">
-                    <button
-                      type="submit"
-                      class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                      Sign up
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div class="border-t border-gray-100 py-10 text-center">
-            <p class="text-sm text-gray-500">
-              &copy; 2023 SecondChance, Inc. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <!-- Footer -->
+      <Footer />
     </div>
   </div>
 </template>
