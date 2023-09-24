@@ -34,6 +34,7 @@ declare module 'vue' {
     MenuButton: typeof import('@headlessui/vue')['MenuButton']
     MenuItem: typeof import('@headlessui/vue')['MenuItem']
     MenuItems: typeof import('@headlessui/vue')['MenuItems']
+    Navbar: typeof import('./components/Navbar.vue')['default']
     Pagination: typeof import('./components/main/Pagination.vue')['default']
     Popover: typeof import('@headlessui/vue')['Popover']
     PopoverButton: typeof import('@headlessui/vue')['PopoverButton']

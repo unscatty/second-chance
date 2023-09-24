@@ -150,7 +150,7 @@ const socialIcons = [
           <a
             v-for="item in socialIcons"
             :key="item.name"
-            href="item#.href"
+            href="#"
             class="text-gray-400 hover:text-gray-500"
           >
             <span class="sr-only">{{ item.name }}</span>
