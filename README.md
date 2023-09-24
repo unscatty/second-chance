@@ -3,6 +3,7 @@ Adopt your perfect companion. A web app to find your perfect furry friend.
 
 Go to site https://unscatty.github.io/second-chance/
 
+Got lost? Read the [QuickStart](/resources/QuickStart.md) section.
 
 ## How to run this project locally
 
