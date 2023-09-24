@@ -16,3 +16,12 @@ declare module '*.vue' {
   const component: DefineComponent<object, object, any>
   export default component
 }
+
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    layout?: string
+    isPublic?: boolean
+    redirectTo?: string
+  }
+}

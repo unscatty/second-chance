@@ -2,12 +2,6 @@
 const authStore = useAuthStore()
 const { setAlertInfo, setErrorMessage } = useAlertInfoStore()
 
-onBeforeMount(() => {
-  if (authStore.isAuthenticated()) {
-    router.push('/')
-  }
-})
-
 const authCredentials = ref({
   name: '',
   email: '',

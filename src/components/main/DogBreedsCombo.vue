@@ -3,9 +3,9 @@ const { breeds } = defineProps<{
   breeds: string[]
 }>()
 
-const selectedDogBreeds = defineModel<string[]>('selectedDogBreeds', { required: true })
-
-// const { filters } = storeToRefs(useFiltersStore())
+const selectedDogBreeds = defineModel<string[]>('selectedDogBreeds', {
+  required: true,
+})
 
 const query = ref('')
 const filteredBreeds = computed(() =>

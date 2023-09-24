@@ -1,20 +1,4 @@
 <script setup lang="ts">
-// Auth
-const { setAlertInfo } = useAlertInfoStore()
-const authStore = useAuthStore()
-const router = useRouter()
-
-onBeforeMount(() => {
-  if (!authStore.isAuthenticated()) {
-    setAlertInfo({
-      message: 'Please login to access this page',
-      type: 'warning',
-    })
-
-    router.push('/auth')
-  }
-})
-
 // Filters and Pagination
 const { sortBy } = storeToRefs(useFiltersStore())
 const paginationStore = usePaginationStore()
@@ -73,24 +57,24 @@ const isFavoritesModalOpen = ref(false)
 
 <template>
   <div class="bg-gray-50">
-    <div>
+    <div sticky top-0 z-5>
       <header class="relative">
         <nav aria-label="Top">
           <!-- Secondary navigation -->
-          <div class="bg-white fixed min-w-full top-0 z-5">
+          <div class="bg-white min-w-full z-5">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div class="border-b border-gray-200">
                 <div class="h-16 flex items-center justify-between">
                   <!-- Logo (lg+) -->
                   <div class="hidden lg:flex lg:items-center">
-                    <a href="#">
+                    <a href="/" class="text-gray-9">
                       <span class="sr-only">Second Chance</span>
                       <DogIcon />
                     </a>
                   </div>
 
                   <!-- Logo (lg-) -->
-                  <a href="#" class="lg:hidden">
+                  <a href="/" class="lg:hidden text-gray-9">
                     <span class="sr-only">Second Chance</span>
                     <DogIcon />
                   </a>
@@ -160,7 +144,7 @@ const isFavoritesModalOpen = ref(false)
           </div>
         </div>
 
-        <Filters />
+        <Filters class="sticky top-16 z-4 bg-white" />
 
         <!-- Dogs grid -->
         <section

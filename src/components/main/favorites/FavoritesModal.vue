@@ -113,6 +113,15 @@ const getMatch = async () => {
                 </div>
                 <!-- Favorite dogs grid -->
                 <div class="max-h-lg overflow-y-scroll overflow-x-hidden p-6">
+                  <div
+                    v-if="favoriteDogs.length < 1"
+                    class="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    <span class="mt-2 block text-2xl font-medium text-gray-900">
+                      You have no favorite dogs. Add some!
+                    </span>
+                  </div>
+
                   <ul role="list" class="grid grid-cols-1 gap-6 lg:grid-cols-3">
                     <li v-for="dog in favoriteDogs" :key="dog.id">
                       <FavoriteDogCard :dog="dog" @remove-dog="removeDog" />

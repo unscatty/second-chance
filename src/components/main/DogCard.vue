@@ -23,7 +23,7 @@ const addToFavorites = () => {
 
 <template>
   <div
-    class="relative w-full aspect-ratio-square bg-gray-200 rounded-lg overflow-hidden xl:aspect-ratio-[7/8]"
+    class="relative w-full aspect-ratio-square bg-gray-200 rounded-2xl overflow-hidden xl:aspect-ratio-[7/8]"
   >
     <img
       :src="image"

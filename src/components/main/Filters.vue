@@ -101,7 +101,7 @@ const applyFilters = () => {
           class="grid grid-cols-1 gap-y-3 auto-rows-min md:grid-cols-2 md:gap-x-6"
         >
           <fieldset>
-            <legend class="block font-medium text-black">Breed</legend>
+            <legend class="block font-medium text-black">Search for a breed</legend>
             <div class="flex flex-wrap items-center gap-3">
               <DogBreedsCombo
                 v-model:selected-dog-breeds="selectedFilters.breeds"
