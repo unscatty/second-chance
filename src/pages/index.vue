@@ -96,6 +96,7 @@ const isFavoritesModalOpen = ref(false)
                         </div>
                       </div>
 
+                      <!-- Separator -->
                       <span
                         class="mx-4 h-6 w-px bg-gray-200 lg:mx-6"
                         aria-hidden="true"
@@ -135,14 +136,8 @@ const isFavoritesModalOpen = ref(false)
 
     <div>
       <main>
-        <div class="bg-white pt-8">
-          <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
-              Title
-            </h1>
-            <p class="mt-4 max-w-xl text-sm text-gray-700">Description</p>
-          </div>
-        </div>
+        <!-- Hero section -->
+        <Hero />
 
         <Filters class="sticky top-16 z-4 bg-white" />
 

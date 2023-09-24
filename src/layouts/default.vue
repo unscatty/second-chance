@@ -1,6 +1,6 @@
 <template>
   <AlertInfo />
-  <main>
+  <main class="">
     <RouterView />
   </main>
 </template>
