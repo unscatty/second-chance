@@ -30,16 +30,6 @@ jobs:
         run: |
           echo "${{ secrets.DEPLOY_GH_PAGES_ENV }}" > .env.gh-pages.local
 
-      - name: Change homepage in package.json
-        uses: maxgfr/github-change-json@main
-        with:
-          key: 'homepage'
-          value: '${{ secrets.HOMEPAGE }}'
-          path: package.json
-
-      - name: Show package.json
-        run: cat package.json
-
       - name: Build static site
         run: pnpm run build --mode gh-pages
 
