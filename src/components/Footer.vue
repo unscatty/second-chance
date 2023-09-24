@@ -144,7 +144,7 @@ const socialIcons = [
       </div>
 
       <div
-        class="mb-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between"
+        class="border-t border-gray-200 py-8 md:flex md:items-center md:justify-between"
       >
         <div class="flex space-x-6 md:order-2">
           <a
@@ -161,12 +161,6 @@ const socialIcons = [
           &copy; 2023 Second Chance. All rights reserved.
         </p>
       </div>
-
-      <!-- <div class="border-t border-gray-100 py-10 text-center">
-        <p class="text-sm text-gray-500">
-          &copy; 2023 SecondChance, Inc. All rights reserved.
-        </p>
-      </div> -->
     </div>
   </footer>
 </template>
