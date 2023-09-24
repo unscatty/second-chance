@@ -1,14 +1,24 @@
 <script setup lang="ts">
-import authService from '~/services/auth.service'
+// Auth
+const { setAlertInfo } = useAlertInfoStore()
+const authStore = useAuthStore()
+const router = useRouter()
 
+onBeforeMount(() => {
+  if (!authStore.isAuthenticated()) {
+    setAlertInfo({
+      message: 'Please login to access this page',
+      type: 'warning',
+    })
+
+    router.push('/auth')
+  }
+})
+
+// Filters and Pagination
 const { sortBy } = storeToRefs(useFiltersStore())
 const paginationStore = usePaginationStore()
 const { handlePaginationResult, reset: resetPagination } = paginationStore
-
-authService.login({
-  email: 'email-1@email.com',
-  name: 'John',
-})
 
 const footerNavigation = {
   products: [

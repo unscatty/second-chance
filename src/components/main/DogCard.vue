@@ -76,11 +76,11 @@ const addToFavorites = () => {
     <p class="text-sm font-italic font-light">
       {{ breed }}
     </p>
-    <p>
+    <p v-if="location">
       <span
         class="inline-flex items-center gap-1 px-2 py-0.75 rounded-full text-xs font-bold bg-gray-200 text-gray-800"
       >
-      <div class="i-heroicons:map-pin-20-solid h-4 w-4"></div>
+        <div class="i-heroicons:map-pin-20-solid h-4 w-4" />
         {{ location.city }}
       </span>
     </p>

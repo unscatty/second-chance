@@ -59,7 +59,7 @@ export class DogService {
   }
 
   getLocations = async (zipCodes: string[]) => {
-    const { data } = await this.axiosInstance.post<Location[]>(
+    const { data } = await this.axiosInstance.post<Array<Location | null>>(
       '/locations',
       zipCodes
     )
@@ -68,11 +68,14 @@ export class DogService {
 
   mergeDogsWithLocations = (
     dogs: DogWithZipCode[],
-    locations: Location[]
+    locations: (Location | null)[]
   ): DogType[] => {
     const locationMap = locations.reduce<Record<string, Location>>(
       (acc, location) => {
-        acc[location.zip_code] = location
+        if (location && location.zip_code) {
+          acc[location.zip_code] = location
+        }
+
         return acc
       },
       {}

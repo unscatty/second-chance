@@ -35,12 +35,15 @@ const removeDog = () => {
         <dt class="sr-only">Breed</dt>
         <dd class="text-gray-500 text-sm">{{ breed }}</dd>
         <dt class="sr-only">Age</dt>
-        <dd class="flex flex-col items-center md:flex-row gap-1 md:justify-center md:flex-wrap mt-3">
+        <dd
+          class="flex flex-col items-center md:flex-row gap-1 md:justify-center md:flex-wrap mt-3"
+        >
           <span
             class="px-4 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800"
             >{{ ageDescription(age) }}</span
           >
           <span
+            v-if="location"
             class="inline-flex items-center justify-center gap-1 px-2 py-0.75 rounded-full text-xs font-bold bg-gray-200 text-gray-800"
           >
             <div class="i-heroicons:map-pin-20-solid h-4 w-4"></div>

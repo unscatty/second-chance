@@ -12,7 +12,7 @@ export interface DogBase {
 }
 
 export type Dog = Omit<DogBase, 'zip_code'> & {
-  location: Location
+  location: Location | null
 }
 
 export interface Location {

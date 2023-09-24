@@ -21,9 +21,10 @@ const selectedFilters = ref<UnwrapRef<typeof filters>>(
 
 const { data: availableDogBreeds } = useQuery({
   queryKey: ['dogBreeds'],
-  queryFn: async () => dogService.getBreeds(),
+  queryFn: async () => await dogService.getBreeds(),
   initialData: [],
-  staleTime: 60 * 1000 * 10, // 10 minutes
+  // staleTime: 60 * 1000 * 10, // 10 minutes
+  refetchOnMount: true,
 })
 
 const ageRange = ref([
@@ -48,6 +49,7 @@ const removeBreed = (breedIndex: number) => {
 
 const clearFilters = () => {
   selectedFilters.value = structuredClone(defaultFilters)
+  ageRange.value = [selectedFilters.value.ageMin, selectedFilters.value.ageMax]
 
   applyFilters()
 }
@@ -56,7 +58,6 @@ const applyFilters = () => {
   resetPagination()
 
   filters.value = structuredClone(toRaw(selectedFilters.value))
-  // filters.value = selectedFilters.value
 }
 </script>
 
@@ -119,7 +120,7 @@ const applyFilters = () => {
           </fieldset>
           <fieldset>
             <legend class="block font-medium text-black">
-              Age {{ selectedFilters.ageMin }} - {{ selectedFilters.ageMax }}
+              Age: {{ selectedFilters.ageMin }} - {{ selectedFilters.ageMax }}
             </legend>
             <div class="px-4 sm:px-0">
               <RangeSlider
