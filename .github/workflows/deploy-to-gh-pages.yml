@@ -34,7 +34,7 @@ jobs:
         run: pnpm run build --mode gh-pages
 
       - name: Create 404 page
-        run: cp dist/.html dist/404.html
+        run: cp dist/index.html dist/404.html
 
       - name: Configure Jekyll
         run: |
