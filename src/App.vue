@@ -8,7 +8,7 @@ useHead({
     { name: 'description', content: 'Embrace Love, Adopt a Second Chance' },
     {
       name: 'theme-color',
-      content: () => (isDark.value ? '#00aba9' : '#ffffff'),
+      content: () => (isDark.value ? '#021b1b' : '#ffffff'),
     },
   ],
   link: [
