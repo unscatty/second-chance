@@ -1,3 +1,4 @@
 <template>
+  <AlertInfo />
   <RouterView />
 </template>
