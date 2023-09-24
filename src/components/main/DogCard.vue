@@ -33,28 +33,26 @@ const addToFavorites = () => {
 
     <!-- Overlay -->
     <div
-      class="absolute w-full h-full bottom-0 bg-gray-900 opacity-0 group-hover:opacity-65"
+      class="absolute w-full h-full bottom-0 bg-gray-900 opacity-0"
+      :class="isFavoriteDog ? 'opacity-65' : ''"
+      sm="group-hover:opacity-65"
     />
-    <div
-      class="absolute flex items-end justify-center p-4 absolute bottom-0 w-full sm:opacity-0 sm:group-hover:opacity-100"
+    <button
+      type="button"
+      class="absolute flex h-full w-full bottom-0 items-center justify-center text-white"
+      @click="addToFavorites"
     >
-      <button
-        class="flex justify-center w-1/2 bg-white bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-gray-900 text-center"
-        @click="addToFavorites"
-      >
-        <div
-          v-if="isFavoriteDog"
-          class="i-heroicons:heart-20-solid h-6 w-6 flex-shrink-0"
-          aria-hidden="true"
-        />
-        <div
-          v-else
-          class="i-heroicons:heart h-6 w-6 flex-shrink-0"
-          aria-hidden="true"
-        />
-        <span class="sr-only">Add to favorites</span>
-      </button>
-    </div>
+      <span
+        :class="[
+          isFavoriteDog
+            ? 'i-heroicons:heart-20-solid'
+            : 'i-heroicons:heart hidden sm:group-hover:block',
+        ]"
+        class="h-1/3 w-1/3 flex-shrink-0"
+        aria-hidden="true"
+      />
+      <span class="sr-only">Add to favorites</span>
+    </button>
   </div>
   <div
     class="mt-4 flex items-center justify-between text-base font-medium text-gray-900 space-x-8"
