@@ -36,7 +36,7 @@ Click on the _heart_ button on the top right corner to see your favorite dogs. Y
 
 ## Find a match
 
-Ready to find a match? Open your favorites and click on the `Find a match` button. Once your match is found you will see a modal with the dog that matches you.
+Ready to find a match? Open your favorites and click on the `Match!` button. Once your match is found you will see a modal with the dog that matches you.
 
 [![Find a match](../resources/screenshots/match-result.png)](../resources/screenshots/match-result.png)
 

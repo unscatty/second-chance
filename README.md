@@ -1,5 +1,6 @@
-# Second Chance (Fetch's Take-home exercise)
-Adopt your perfect companion. A web app to find your perfect furry friend.
+# ![Second Chance Icon](/public/favicon.svg) Second Chance (Fetch's Take-home exercise)
+
+> Adopt your perfect companion. A web app to find your perfect furry friend.
 
 Go to site https://unscatty.github.io/second-chance/
 
@@ -12,6 +13,7 @@ Got lost? Read the [QuickStart](/resources/QuickStart.md) section.
 ```bash
 git clone https://github.com/unscatty/second-chance/
 ```
+
 #### Go to the project directory
 
 ```bash
@@ -23,6 +25,7 @@ cd second-chance
 ```bash
 npm install -g pnpm
 ```
+
 or read the docs [here](https://pnpm.io/installation)
 
 #### Install dependencies
@@ -30,20 +33,20 @@ or read the docs [here](https://pnpm.io/installation)
 ```bash
 pnpm install
 ```
+
 #### Add environment variables
 
 Example `.env.local` file
 
-
 ```bash
 cp .env.example .env.local
 ```
+Write this into `.env.local` file
 ```bash
 VITE_DOGS_ENDPOINT='https://frontend-take-home-service.fetch.com'
 ```
 
 Modify the `VITE_DOGS_ENDPOINT` variable inside `.env.local` file to point to the correct endpoint.
-
 
 #### Run the project
 
@@ -54,7 +57,8 @@ pnpm run dev
 Go to [localhost:4000](http://localhost:4000)
 
 ## Tech Stack
-This project uses the [Vitesse](https://github.com/antfu/vitesse) template.
+
+This project uses the [Vitesse](https://github.com/antfu/vitesse) template for a quick start.
 
 - Vue 3
 - Vite (for bundling)
@@ -73,18 +77,21 @@ This project uses the [Vitesse](https://github.com/antfu/vitesse) template.
 - ESLint and Prettier (for code formatting and linting)
 
 ## Deployment
+
 Project is deployed using GitHub Pages via GitHub Actions. Deployment is triggered on every push to `main` branch.
 
 ## TODO
+
 - [ ] Better dark mode support (some styles are broken)
-- [ ] Add more tests
+- [ ] Consistent colors (create branding colors)
 - [ ] Filter dogs by location
 - [ ] Search dogs closer to your location, using the browser's geolocation API
 - [ ] Use route's query params to filter dogs
 - [ ] Send email to user when they got a match
 - [ ] Be more user friendly when there are no dogs to show
 - [ ] More alert notifications when something goes wrong
+- [ ] Add more tests
 
 ## Authors
-Carlos Aguilera - [@unscatty](https://github.com/unscatty/)
 
+Carlos Aguilera - [@unscatty](https://github.com/unscatty/)
