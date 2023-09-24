@@ -18,7 +18,10 @@ const isFavoritesModalOpen = ref(false)
               <div class="h-16 flex items-center justify-between">
                 <!-- Logo (lg+) -->
                 <div class="hidden lg:flex lg:items-center">
-                  <a href="/" class="text-gray-9 flex gap-2 justify-start items-center">
+                  <a
+                    href="/"
+                    class="text-gray-9 flex gap-2 justify-start items-center"
+                  >
                     <span class="sr-only">Second Chance</span>
                     <DogIcon />
                     <span class="text-xl font-black text-gray-9 uppercase">
@@ -37,16 +40,7 @@ const isFavoritesModalOpen = ref(false)
                   <div class="flex items-center lg:ml-8">
                     <div class="flex space-x-8">
                       <div class="flex">
-                        <a
-                          href="#"
-                          class="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                        >
-                          <span class="sr-only">Account</span>
-                          <div
-                            class="i-heroicons:user-20-solid w-6 h-6"
-                            aria-hidden="true"
-                          />
-                        </a>
+                        <NavUserMenu />
                       </div>
                     </div>
 
