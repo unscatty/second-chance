@@ -64,6 +64,7 @@ This project uses the [Vitesse](https://github.com/antfu/vitesse) template.
 Project is deployed using GitHub Pages via GitHub Actions. Deployment is triggered on every push to `main` branch.
 
 ## TODO
+- [ ] Better dark mode support (some styles are broken)
 - [ ] Add more tests
 - [ ] Filter dogs by location
 - [ ] Search dogs closer to your location, using the browser's geolocation API

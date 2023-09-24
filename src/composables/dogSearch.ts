@@ -18,6 +18,6 @@ export const useDogSearch = (key: string) => {
       }),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
-    staleTime: 60 * 1000 * 15, // 15 minutes to invalidate cache
+    staleTime: 60 * 1000 * 5, // 5 minutes to invalidate cache
   })
 }

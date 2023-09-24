@@ -33,11 +33,11 @@ const footerNavigation = {
 
 const {
   isLoading,
-  isError,
   data: dogsData,
-  error,
   isFetching,
   isPreviousData,
+  isError,
+  failureCount,
 } = useDogSearch('dogs')
 
 watch(dogsData, () => {
@@ -165,6 +165,9 @@ const isFavoritesModalOpen = ref(false)
               class="w-32 h-32 border-8 sm:w-64 sm:h-64 sm:border-16 border-dashed rounded-full animate-spin border-violet-400 dark:border-white"
             />
           </div>
+
+          <!-- Error -->
+          <ErrorAlert v-if="isError" :attempts="failureCount" />
 
           <div
             v-show="dogsData?.dogs && !isLoading && !isFetching"

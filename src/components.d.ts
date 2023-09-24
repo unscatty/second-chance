@@ -21,6 +21,7 @@ declare module 'vue' {
     DogBreedsCombo: typeof import('./components/main/DogBreedsCombo.vue')['default']
     DogCard: typeof import('./components/main/DogCard.vue')['default']
     DogIcon: typeof import('./components/DogIcon.vue')['default']
+    ErrorAlert: typeof import('./components/ErrorAlert.vue')['default']
     FavoriteDogCard: typeof import('./components/main/favorites/FavoriteDogCard.vue')['default']
     FavoritesModal: typeof import('./components/main/favorites/FavoritesModal.vue')['default']
     Filters: typeof import('./components/main/Filters.vue')['default']
